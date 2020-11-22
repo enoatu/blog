@@ -1,0 +1,27 @@
+{
+  "name": "typography-theme-enotiru",
+  "description": "enotiru typography theme",
+  "version": "0.0.1",
+  "main": "index.js",
+  "dependencies": {
+    "gray-percentage": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riywo/typography-japanese.git"
+  },
+  "author": "enotiru",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/riywo/typography-theme-enotiru/issues"
+  },
+  "keywords": [
+    "css",
+    "typography",
+    "typography-theme"
+  ],
+  "homepage": "https://github.com/riywo/typography-enotiru#readme"
+}
