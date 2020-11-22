@@ -1,6 +1,7 @@
 import dat from 'dat.gui'
 
-export const main = canvas => {
+export const main = () => {
+  const canvas = document.querySelector('canvas')
   // Simulation section
   resizeCanvas();
 
