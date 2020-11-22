@@ -7,14 +7,11 @@
   height: 20vh;
   max-height: 100px;
   font-size: 1.25em;
+  margin-bottom: 40px;
 }
 
 .navigationItem {
   display: inline-flex;
   align-items: center;
   margin: 0 1em;
-}
-
-.navigationItem a {
-  color: currentColor;
 }
