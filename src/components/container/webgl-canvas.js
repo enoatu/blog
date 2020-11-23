@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 export default () => {
   const [isDraw, setIsDraw] = React.useState(false)
-  useEffect(() => {
+  React.useEffect(() => {
     async function loadData() {
       if (!isDraw) {
         const webGl = await import('@/utils/webgl')

@@ -1,5 +1,5 @@
-import dat from 'dat.gui'
-
+// import dat from 'dat.gui'
+// コメント行はGUI操作枠に関係
 export const main = () => {
   const canvas = document.querySelector('canvas')
   // Simulation section
@@ -177,148 +177,148 @@ export const main = () => {
     return status === gl.FRAMEBUFFER_COMPLETE;
   }
 
-  function startGUI() {
-    var gui = new dat.GUI({ width: 300 });
-    gui
-      .add(config, "DYE_RESOLUTION", {
-        high: 1024,
-        medium: 512,
-        low: 256,
-        "very low": 128,
-      })
-      .name("quality")
-      .onFinishChange(initFramebuffers);
-    gui
-      .add(config, "SIM_RESOLUTION", { 32: 32, 64: 64, 128: 128, 256: 256 })
-      .name("sim resolution")
-      .onFinishChange(initFramebuffers);
-    gui.add(config, "DENSITY_DISSIPATION", 0, 4.0).name("density diffusion");
-    gui.add(config, "VELOCITY_DISSIPATION", 0, 4.0).name("velocity diffusion");
-    gui.add(config, "PRESSURE", 0.0, 1.0).name("pressure");
-    gui.add(config, "CURL", 0, 50).name("vorticity").step(1);
-    gui.add(config, "SPLAT_RADIUS", 0.01, 1.0).name("splat radius");
-    gui.add(config, "SHADING").name("shading").onFinishChange(updateKeywords);
-    gui.add(config, "COLORFUL").name("colorful");
-    gui.add(config, "PAUSED").name("paused").listen();
+  // function startGUI() {
+  //   var gui = new dat.GUI({ width: 300 });
+  //   gui
+  //     .add(config, "DYE_RESOLUTION", {
+  //       high: 1024,
+  //       medium: 512,
+  //       low: 256,
+  //       "very low": 128,
+  //     })
+  //     .name("quality")
+  //     .onFinishChange(initFramebuffers);
+  //   gui
+  //     .add(config, "SIM_RESOLUTION", { 32: 32, 64: 64, 128: 128, 256: 256 })
+  //     .name("sim resolution")
+  //     .onFinishChange(initFramebuffers);
+  //   gui.add(config, "DENSITY_DISSIPATION", 0, 4.0).name("density diffusion");
+  //   gui.add(config, "VELOCITY_DISSIPATION", 0, 4.0).name("velocity diffusion");
+  //   gui.add(config, "PRESSURE", 0.0, 1.0).name("pressure");
+  //   gui.add(config, "CURL", 0, 50).name("vorticity").step(1);
+  //   gui.add(config, "SPLAT_RADIUS", 0.01, 1.0).name("splat radius");
+  //   gui.add(config, "SHADING").name("shading").onFinishChange(updateKeywords);
+  //   gui.add(config, "COLORFUL").name("colorful");
+  //   gui.add(config, "PAUSED").name("paused").listen();
 
-    gui
-      .add(
-        {
-          fun: () => {
-            splatStack.push(parseInt(Math.random() * 20) + 5);
-          },
-        },
-        "fun"
-      )
-      .name("Random splats");
+  //   gui
+  //     .add(
+  //       {
+  //         fun: () => {
+  //           splatStack.push(parseInt(Math.random() * 20) + 5);
+  //         },
+  //       },
+  //       "fun"
+  //     )
+  //     .name("Random splats");
 
-    let bloomFolder = gui.addFolder("Bloom");
-    bloomFolder
-      .add(config, "BLOOM")
-      .name("enabled")
-      .onFinishChange(updateKeywords);
-    bloomFolder.add(config, "BLOOM_INTENSITY", 0.1, 2.0).name("intensity");
-    bloomFolder.add(config, "BLOOM_THRESHOLD", 0.0, 1.0).name("threshold");
+  //   let bloomFolder = gui.addFolder("Bloom");
+  //   bloomFolder
+  //     .add(config, "BLOOM")
+  //     .name("enabled")
+  //     .onFinishChange(updateKeywords);
+  //   bloomFolder.add(config, "BLOOM_INTENSITY", 0.1, 2.0).name("intensity");
+  //   bloomFolder.add(config, "BLOOM_THRESHOLD", 0.0, 1.0).name("threshold");
 
-    let sunraysFolder = gui.addFolder("Sunrays");
-    sunraysFolder
-      .add(config, "SUNRAYS")
-      .name("enabled")
-      .onFinishChange(updateKeywords);
-    sunraysFolder.add(config, "SUNRAYS_WEIGHT", 0.3, 1.0).name("weight");
+  //   let sunraysFolder = gui.addFolder("Sunrays");
+  //   sunraysFolder
+  //     .add(config, "SUNRAYS")
+  //     .name("enabled")
+  //     .onFinishChange(updateKeywords);
+  //   sunraysFolder.add(config, "SUNRAYS_WEIGHT", 0.3, 1.0).name("weight");
 
-    let captureFolder = gui.addFolder("Capture");
-    captureFolder.addColor(config, "BACK_COLOR").name("background color");
-    captureFolder.add(config, "TRANSPARENT").name("transparent");
-    captureFolder
-      .add({ fun: captureScreenshot }, "fun")
-      .name("take screenshot");
+  //   let captureFolder = gui.addFolder("Capture");
+  //   captureFolder.addColor(config, "BACK_COLOR").name("background color");
+  //   captureFolder.add(config, "TRANSPARENT").name("transparent");
+  //   captureFolder
+  //     .add({ fun: captureScreenshot }, "fun")
+  //     .name("take screenshot");
 
-    if (isMobile()) gui.close();
-  }
+  //   if (isMobile()) gui.close();
+  // }
 
   function isMobile() {
     return /Mobi|Android/i.test(navigator.userAgent);
   }
 
-  function captureScreenshot() {
-    let res = getResolution(config.CAPTURE_RESOLUTION);
-    let target = createFBO(
-      res.width,
-      res.height,
-      ext.formatRGBA.internalFormat,
-      ext.formatRGBA.format,
-      ext.halfFloatTexType,
-      gl.NEAREST
-    );
-    render(target);
+  // function captureScreenshot() {
+  //   let res = getResolution(config.CAPTURE_RESOLUTION);
+  //   let target = createFBO(
+  //     res.width,
+  //     res.height,
+  //     ext.formatRGBA.internalFormat,
+  //     ext.formatRGBA.format,
+  //     ext.halfFloatTexType,
+  //     gl.NEAREST
+  //   );
+  //   render(target);
 
-    let texture = framebufferToTexture(target);
-    texture = normalizeTexture(texture, target.width, target.height);
+  //   let texture = framebufferToTexture(target);
+  //   texture = normalizeTexture(texture, target.width, target.height);
 
-    let captureCanvas = textureToCanvas(texture, target.width, target.height);
-    let datauri = captureCanvas.toDataURL();
-    downloadURI("fluid.png", datauri);
-    URL.revokeObjectURL(datauri);
-  }
+  //   let captureCanvas = textureToCanvas(texture, target.width, target.height);
+  //   let datauri = captureCanvas.toDataURL();
+  //   downloadURI("fluid.png", datauri);
+  //   URL.revokeObjectURL(datauri);
+  // }
 
-  function framebufferToTexture(target) {
-    gl.bindFramebuffer(gl.FRAMEBUFFER, target.fbo);
-    let length = target.width * target.height * 4;
-    let texture = new Float32Array(length);
-    gl.readPixels(
-      0,
-      0,
-      target.width,
-      target.height,
-      gl.RGBA,
-      gl.FLOAT,
-      texture
-    );
-    return texture;
-  }
+  // function framebufferToTexture(target) {
+  //   gl.bindFramebuffer(gl.FRAMEBUFFER, target.fbo);
+  //   let length = target.width * target.height * 4;
+  //   let texture = new Float32Array(length);
+  //   gl.readPixels(
+  //     0,
+  //     0,
+  //     target.width,
+  //     target.height,
+  //     gl.RGBA,
+  //     gl.FLOAT,
+  //     texture
+  //   );
+  //   return texture;
+  // }
 
-  function normalizeTexture(texture, width, height) {
-    let result = new Uint8Array(texture.length);
-    let id = 0;
-    for (let i = height - 1; i >= 0; i--) {
-      for (let j = 0; j < width; j++) {
-        let nid = i * width * 4 + j * 4;
-        result[nid + 0] = clamp01(texture[id + 0]) * 255;
-        result[nid + 1] = clamp01(texture[id + 1]) * 255;
-        result[nid + 2] = clamp01(texture[id + 2]) * 255;
-        result[nid + 3] = clamp01(texture[id + 3]) * 255;
-        id += 4;
-      }
-    }
-    return result;
-  }
+  // function normalizeTexture(texture, width, height) {
+  //   let result = new Uint8Array(texture.length);
+  //   let id = 0;
+  //   for (let i = height - 1; i >= 0; i--) {
+  //     for (let j = 0; j < width; j++) {
+  //       let nid = i * width * 4 + j * 4;
+  //       result[nid + 0] = clamp01(texture[id + 0]) * 255;
+  //       result[nid + 1] = clamp01(texture[id + 1]) * 255;
+  //       result[nid + 2] = clamp01(texture[id + 2]) * 255;
+  //       result[nid + 3] = clamp01(texture[id + 3]) * 255;
+  //       id += 4;
+  //     }
+  //   }
+  //   return result;
+  // }
 
-  function clamp01(input) {
-    return Math.min(Math.max(input, 0), 1);
-  }
+  // function clamp01(input) {
+  //   return Math.min(Math.max(input, 0), 1);
+  // }
 
-  function textureToCanvas(texture, width, height) {
-    let captureCanvas = document.createElement("canvas");
-    let ctx = captureCanvas.getContext("2d");
-    captureCanvas.width = width;
-    captureCanvas.height = height;
+  // function textureToCanvas(texture, width, height) {
+  //   let captureCanvas = document.createElement("canvas");
+  //   let ctx = captureCanvas.getContext("2d");
+  //   captureCanvas.width = width;
+  //   captureCanvas.height = height;
 
-    let imageData = ctx.createImageData(width, height);
-    imageData.data.set(texture);
-    ctx.putImageData(imageData, 0, 0);
+  //   let imageData = ctx.createImageData(width, height);
+  //   imageData.data.set(texture);
+  //   ctx.putImageData(imageData, 0, 0);
 
-    return captureCanvas;
-  }
+  //   return captureCanvas;
+  // }
 
-  function downloadURI(filename, uri) {
-    let link = document.createElement("a");
-    link.download = filename;
-    link.href = uri;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
+  // function downloadURI(filename, uri) {
+  //   let link = document.createElement("a");
+  //   link.download = filename;
+  //   link.href = uri;
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   document.body.removeChild(link);
+  // }
 
   class Material {
     constructor(vertexShader, fragmentShaderSource) {
@@ -406,7 +406,6 @@ export const main = () => {
     if (keywords == null) {
       return source;
     }
-    console.log(keywords)
     let keywordsString = "";
     keywords.forEach((keyword) => {
       keywordsString += "#define " + keyword + "\n";
@@ -914,11 +913,11 @@ export const main = () => {
     };
   })();
 
-  function CHECK_FRAMEBUFFER_STATUS() {
-    let status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
-    if (status !== gl.FRAMEBUFFER_COMPLETE)
-      console.trace("Framebuffer error: " + status);
-  }
+  // function CHECK_FRAMEBUFFER_STATUS() {
+  //   let status = gl.checkFramebufferStatus(gl.FRAMEBUFFER);
+  //   if (status !== gl.FRAMEBUFFER_COMPLETE)
+  //     console.trace("Framebuffer error: " + status);
+  // }
 
   let dye;
   let velocity;
@@ -1632,63 +1631,63 @@ export const main = () => {
   // });
   // dna
 
-  const c = canvas
-  c.addEventListener("mousedown", (e) => {
-    let posX = scaleByPixelRatio(e.offsetX);
-    let posY = scaleByPixelRatio(e.offsetY);
-    let pointer = pointers.find((p) => p.id === -1);
-    if (pointer === null) pointer = new pointerPrototype();
-    updatePointerDownData(pointer, -1, posX, posY);
-  });
+  const c = document.querySelector('#container');
+  // c.addEventListener("mousedown", (e) => {
+  //   let posX = scaleByPixelRatio(e.offsetX);
+  //   let posY = scaleByPixelRatio(e.offsetY);
+  //   let pointer = pointers.find((p) => p.id === -1);
+  //   if (pointer === null) pointer = new pointerPrototype();
+  //   updatePointerDownData(pointer, -1, posX, posY);
+  // });
 
-  c.addEventListener("mousemove", (e) => {
-    let pointer = pointers[0];
-    if (!pointer.down) return;
-    let posX = scaleByPixelRatio(e.offsetX);
-    let posY = scaleByPixelRatio(e.offsetY);
-    updatePointerMoveData(pointer, posX, posY);
-  });
+  // c.addEventListener("mousemove", (e) => {
+  //   let pointer = pointers[0];
+  //   if (!pointer.down) return;
+  //   let posX = scaleByPixelRatio(e.offsetX);
+  //   let posY = scaleByPixelRatio(e.offsetY);
+  //   updatePointerMoveData(pointer, posX, posY);
+  // });
 
-  window.addEventListener("mouseup", () => {
-    updatePointerUpData(pointers[0]);
-  });
+  // window.addEventListener("mouseup", () => {
+  //   updatePointerUpData(pointers[0]);
+  // });
 
-  c.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    const touches = e.targetTouches;
-    while (touches.length >= pointers.length)
-      pointers.push(new pointerPrototype());
-    for (let i = 0; i < touches.length; i++) {
-      let posX = scaleByPixelRatio(touches[i].pageX);
-      let posY = scaleByPixelRatio(touches[i].pageY);
-      updatePointerDownData(pointers[i + 1], touches[i].identifier, posX, posY);
-    }
-  });
+  // c.addEventListener("touchstart", (e) => {
+  //   e.preventDefault();
+  //   const touches = e.targetTouches;
+  //   while (touches.length >= pointers.length)
+  //     pointers.push(new pointerPrototype());
+  //   for (let i = 0; i < touches.length; i++) {
+  //     let posX = scaleByPixelRatio(touches[i].pageX);
+  //     let posY = scaleByPixelRatio(touches[i].pageY);
+  //     updatePointerDownData(pointers[i + 1], touches[i].identifier, posX, posY);
+  //   }
+  // });
 
-  c.addEventListener(
-    "touchmove",
-    (e) => {
-      e.preventDefault();
-      const touches = e.targetTouches;
-      for (let i = 0; i < touches.length; i++) {
-        let pointer = pointers[i + 1];
-        if (!pointer.down) continue;
-        let posX = scaleByPixelRatio(touches[i].pageX);
-        let posY = scaleByPixelRatio(touches[i].pageY);
-        updatePointerMoveData(pointer, posX, posY);
-      }
-    },
-    false
-  );
+  // c.addEventListener(
+  //   "touchmove",
+  //   (e) => {
+  //     e.preventDefault();
+  //     const touches = e.targetTouches;
+  //     for (let i = 0; i < touches.length; i++) {
+  //       let pointer = pointers[i + 1];
+  //       if (!pointer.down) continue;
+  //       let posX = scaleByPixelRatio(touches[i].pageX);
+  //       let posY = scaleByPixelRatio(touches[i].pageY);
+  //       updatePointerMoveData(pointer, posX, posY);
+  //     }
+  //   },
+  //   false
+  // );
 
-  window.addEventListener("touchend", (e) => {
-    const touches = e.changedTouches;
-    for (let i = 0; i < touches.length; i++) {
-      let pointer = pointers.find((p) => p.id === touches[i].identifier);
-      if (pointer == null) continue;
-      updatePointerUpData(pointer);
-    }
-  });
+  // window.addEventListener("touchend", (e) => {
+  //   const touches = e.changedTouches;
+  //   for (let i = 0; i < touches.length; i++) {
+  //     let pointer = pointers.find((p) => p.id === touches[i].identifier);
+  //     if (pointer == null) continue;
+  //     updatePointerUpData(pointer);
+  //   }
+  // });
 
   window.addEventListener("keydown", (e) => {
     if (e.code === "KeyP") config.PAUSED = !config.PAUSED;
@@ -1782,6 +1781,8 @@ export const main = () => {
         g = p
         b = q
         break;
+      default:
+        throw new Error('Invalid case')
     }
 
     return {
