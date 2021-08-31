@@ -18,7 +18,7 @@ class BlogIndex extends React.Component {
           <div className={styles.hero}>
             Blog=
             <span role="img" aria-label="poop">
-              💩
+              プログラミング
             </span>
           </div>
           <div className="wrapper">
