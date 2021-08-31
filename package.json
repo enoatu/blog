@@ -2,11 +2,17 @@
   "name": "enoatu-blog",
   "description": "Blog",
   "scripts": {
+    "fmt": "prettier --check --write 'src/**/*{.mjs,.js,.jsx,.ts,.tsx}'",
     "dev": "gatsby develop",
     "build": "gatsby build",
     "heroku-postbuild": "gatsby build",
     "serve": "gatsby serve",
     "setup": "npm install --no-save contentful-import yargs-parser axios chalk && node ./setup.js"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --check --write 'src/**/*{.mjs,.js,.jsx,.ts,.tsx}'"
+    ]
   },
   "private": true,
   "version": "0.0.1",
@@ -20,11 +26,13 @@
     "gatsby-source-contentful": "^2.1.78",
     "gatsby-transformer-remark": "^2.1.6",
     "gh-pages": "^2.0.1",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.1",
     "lodash": "^4.17.11",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.0",
-    "sharp": "0.24.0",
     "ssr-window": "^3.0.0"
   },
   "license": "MIT",
@@ -34,6 +42,7 @@
     "gatsby-plugin-typography": "^2.3.22",
     "gatsby-transformer-sharp": "^2.7.0",
     "react-typography": "^0.16.19",
+    "sharp": "0.24.0",
     "typography": "^0.16.19"
   }
 }
