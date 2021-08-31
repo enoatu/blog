@@ -12,5 +12,5 @@ export default () => {
     }
     loadData()
   })
-  return <canvas/>
+  return <canvas />
 }

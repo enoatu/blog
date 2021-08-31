@@ -15,7 +15,12 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location}>
         <div>
           <Helmet title={siteTitle} />
-          <div className={styles.hero}>Blog=<span role="img" aria-label="poop">💩</span></div>
+          <div className={styles.hero}>
+            Blog=
+            <span role="img" aria-label="poop">
+              💩
+            </span>
+          </div>
           <div className="wrapper">
             <h2 className="section-headline">Recent articles</h2>
             <ul className="article-list">

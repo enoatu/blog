@@ -11,7 +11,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "*": [
+    "*.js": [
       "prettier --check --write 'src/**/*{.mjs,.js,.jsx,.ts,.tsx}'"
     ]
   },
