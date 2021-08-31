@@ -54,7 +54,7 @@ export const pageQuery = graphql`
       publishDate(formatString: "YYYY年MM月DD日")
       heroImage {
         fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid
         }
       }
       body {
