@@ -7,12 +7,19 @@
     "build": "gatsby build",
     "heroku-postbuild": "gatsby build",
     "serve": "gatsby serve",
-    "setup": "npm install --no-save contentful-import yargs-parser axios chalk && node ./setup.js"
+    "setup": "npm install --no-save contentful-import yargs-parser axios chalk && node ./setup.js",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*": [
       "prettier --check --write 'src/**/*{.mjs,.js,.jsx,.ts,.tsx}'"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "lint-staged": "lint-staged"
+    }
   },
   "private": true,
   "version": "0.0.1",
