@@ -1,6 +1,10 @@
 {
   "name": "enoatu-blog",
+  "license": "MIT",
+  "main": "n/a",
   "description": "Blog",
+  "private": true,
+  "version": "0.0.1",
   "scripts": {
     "fmt": "prettier --check --write 'src/**/*{.mjs,.js,.jsx,.ts,.tsx}'",
     "dev": "gatsby develop",
@@ -21,8 +25,6 @@
       "lint-staged": "lint-staged"
     }
   },
-  "private": true,
-  "version": "0.0.1",
   "dependencies": {
     "dat.gui": "^0.7.7",
     "eslint-plugin-react": "^7.21.5",
@@ -42,8 +44,6 @@
     "react-helmet": "^5.2.0",
     "ssr-window": "^3.0.0"
   },
-  "license": "MIT",
-  "main": "n/a",
   "devDependencies": {
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-typography": "^2.3.22",

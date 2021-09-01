@@ -6,9 +6,12 @@ export const main = () => {
   resizeCanvas()
 
   let config = {
-    SIM_RESOLUTION: 128,
-    DYE_RESOLUTION: 1024,
-    CAPTURE_RESOLUTION: 512,
+    // SIM_RESOLUTION: 128,
+    SIM_RESOLUTION: 80,
+    // DYE_RESOLUTION: 1024,
+    DYE_RESOLUTION: 600,
+    // CAPTURE_RESOLUTION: 512,
+    CAPTURE_RESOLUTION: 351,
     DENSITY_DISSIPATION: 1,
     VELOCITY_DISSIPATION: 0.2,
     PRESSURE: 0.8,
@@ -1604,7 +1607,7 @@ export const main = () => {
   // });
   // dna
 
-  const c = document.querySelector('#container')
+  // const c = document.querySelector('#container')
   // c.addEventListener("mousedown", (e) => {
   //   let posX = scaleByPixelRatio(e.offsetX);
   //   let posY = scaleByPixelRatio(e.offsetY);
@@ -1667,44 +1670,44 @@ export const main = () => {
     if (e.key === ' ') splatStack.push(parseInt(Math.random() * 20) + 5)
   })
 
-  function updatePointerDownData(pointer, id, posX, posY) {
-    pointer.id = id
-    pointer.down = true
-    pointer.moved = false
-    pointer.texcoordX = posX / canvas.width
-    pointer.texcoordY = 1.0 - posY / canvas.height
-    pointer.prevTexcoordX = pointer.texcoordX
-    pointer.prevTexcoordY = pointer.texcoordY
-    pointer.deltaX = 0
-    pointer.deltaY = 0
-    pointer.color = generateColor()
-  }
+  // function updatePointerDownData(pointer, id, posX, posY) {
+  //   pointer.id = id
+  //   pointer.down = true
+  //   pointer.moved = false
+  //   pointer.texcoordX = posX / canvas.width
+  //   pointer.texcoordY = 1.0 - posY / canvas.height
+  //   pointer.prevTexcoordX = pointer.texcoordX
+  //   pointer.prevTexcoordY = pointer.texcoordY
+  //   pointer.deltaX = 0
+  //   pointer.deltaY = 0
+  //   pointer.color = generateColor()
+  // }
 
-  function updatePointerMoveData(pointer, posX, posY) {
-    pointer.prevTexcoordX = pointer.texcoordX
-    pointer.prevTexcoordY = pointer.texcoordY
-    pointer.texcoordX = posX / canvas.width
-    pointer.texcoordY = 1.0 - posY / canvas.height
-    pointer.deltaX = correctDeltaX(pointer.texcoordX - pointer.prevTexcoordX)
-    pointer.deltaY = correctDeltaY(pointer.texcoordY - pointer.prevTexcoordY)
-    pointer.moved = Math.abs(pointer.deltaX) > 0 || Math.abs(pointer.deltaY) > 0
-  }
+  // function updatePointerMoveData(pointer, posX, posY) {
+  //   pointer.prevTexcoordX = pointer.texcoordX
+  //   pointer.prevTexcoordY = pointer.texcoordY
+  //   pointer.texcoordX = posX / canvas.width
+  //   pointer.texcoordY = 1.0 - posY / canvas.height
+  //   pointer.deltaX = correctDeltaX(pointer.texcoordX - pointer.prevTexcoordX)
+  //   pointer.deltaY = correctDeltaY(pointer.texcoordY - pointer.prevTexcoordY)
+  //   pointer.moved = Math.abs(pointer.deltaX) > 0 || Math.abs(pointer.deltaY) > 0
+  // }
 
-  function updatePointerUpData(pointer) {
-    pointer.down = false
-  }
+  // function updatePointerUpData(pointer) {
+  //   pointer.down = false
+  // }
 
-  function correctDeltaX(delta) {
-    let aspectRatio = canvas.width / canvas.height
-    if (aspectRatio < 1) delta *= aspectRatio
-    return delta
-  }
+  // function correctDeltaX(delta) {
+  //   let aspectRatio = canvas.width / canvas.height
+  //   if (aspectRatio < 1) delta *= aspectRatio
+  //   return delta
+  // }
 
-  function correctDeltaY(delta) {
-    let aspectRatio = canvas.width / canvas.height
-    if (aspectRatio > 1) delta /= aspectRatio
-    return delta
-  }
+  // function correctDeltaY(delta) {
+  //   let aspectRatio = canvas.width / canvas.height
+  //   if (aspectRatio > 1) delta /= aspectRatio
+  //   return delta
+  // }
 
   function generateColor() {
     let c = HSVtoRGB(Math.random(), 1.0, 1.0)

@@ -3,7 +3,7 @@ import './base.css'
 import Container from './container'
 import Navigation from './navigation'
 
-class Template extends React.Component {
+class Layout extends React.Component {
   render() {
     const { children } = this.props
 
@@ -16,4 +16,4 @@ class Template extends React.Component {
   }
 }
 
-export default Template
+export default Layout

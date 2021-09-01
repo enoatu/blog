@@ -1,6 +1,7 @@
 const Promise = require('bluebird')
 const path = require('path')
 
+// set blog-post for createPage
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -20,14 +21,14 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         `
-      ).then(result => {
+      ).then((result) => {
         if (result.errors) {
           console.log(result.errors)
           reject(result.errors)
         }
 
         const posts = result.data.allContentfulBlogPost.edges
-        posts.forEach(post => {
+        posts.forEach((post) => {
           createPage({
             path: `/blog/${post.node.slug}/`,
             component: blogPost,
