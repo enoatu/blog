@@ -1,7 +1,7 @@
 import React from 'react'
-import './base.css'
-import Container from './container'
-import Navigation from './navigation'
+import '@c/base.css'
+import Container from '@c/container'
+import Navigation from '@c/navigation'
 
 class Layout extends React.Component {
   render() {
