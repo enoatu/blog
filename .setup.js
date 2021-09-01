@@ -49,7 +49,7 @@ const fileRequest = axios({
 })
 
 fileRequest.then(
-  response => {
+  (response) => {
     saveConfigFile({ spaceId, deliveryToken })
 
     // we need to add promise handlers here, so we don't fall here from the
@@ -64,7 +64,7 @@ fileRequest.then(
         )
         console.log('')
       })
-      .catch(error => console.error(error))
+      .catch((error) => console.error(error))
   },
   () => {
     // request failed – might be a network, might be a github issue.
