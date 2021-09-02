@@ -22,10 +22,14 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  siteMetadata: {
+    title: 'enoatuのブログ',
+  },
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-provide-react', // react を追加する
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
