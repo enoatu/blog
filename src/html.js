@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types'
 import { graphql, useStaticQuery } from 'gatsby'
 import get from 'lodash/get'
+import PropTypes from 'prop-types'
 
 export default function HTML(props) {
   const data = useStaticQuery(graphql`
