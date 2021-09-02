@@ -14,7 +14,6 @@ export default function HTML(props) {
       }
     }
   `)
-  console.log(data)
   const faivonUrl = get(data, 'allContentfulAsset.nodes[0].file.url')
   return (
     <html {...props.htmlAttributes}>
