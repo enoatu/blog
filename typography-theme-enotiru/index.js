@@ -25,16 +25,10 @@ const theme = {
       styles: ['400'],
     },
   ],
-  headerFontFamily: [
-    'Roboto Slab',
-    'M PLUS 1p',
-  ],
-  bodyFontFamily: [
-    'Merriweather',
-    'Noto Sans JP',
-  ],
-  headerColor: "hsl(0,0%,20%)",
-  bodyColor: "hsl(0,0%,30%)",
+  headerFontFamily: ['Roboto Slab', 'M PLUS 1p'],
+  bodyFontFamily: ['Merriweather', 'Noto Sans JP'],
+  headerColor: 'hsl(0,0%,20%)',
+  bodyColor: 'hsl(0,0%,30%)',
 
   overrideStyles: ({ scale, rhythm }, options, styles) => ({
     html: {
@@ -43,17 +37,20 @@ const theme = {
     'h1,h2,h3,h4,h5,h6': {
       letterSpacing: '0.02em',
     },
+    '.post-content img': {
+      padding: '0 10px',
+    },
     p: {
       textAlign: 'justify',
       wordBreak: 'break-all',
     },
     a: {
-      color: "inherit",
+      color: 'inherit',
     },
-    "a:hover": {
-      color: "#3498DB",
+    'a:hover': {
+      color: '#3498DB',
     },
-    'li': {
+    li: {
       marginBottom: '0.5em',
     },
     blockquote: {
@@ -72,12 +69,12 @@ const theme = {
       content: '"\\201C"',
       color: '#333',
     },
-    'pre': {
+    pre: {
       overflowX: 'auto',
       padding: '1rem',
       background: 'hsla(0,0%,0%,0.04)',
     },
-  })
+  }),
 }
 
 export default theme

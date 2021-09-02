@@ -1,4 +1,3 @@
-import React from 'react'
 import WebGlCanvas from '@/components/container/webgl-canvas'
 
 export default ({ children }) => {

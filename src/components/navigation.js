@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link } from 'gatsby'
 import styles from '@/components/navigation.module.css'
 

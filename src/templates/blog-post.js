@@ -1,4 +1,3 @@
-import React from 'react'
 import { useEffect, useRef } from 'react'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
@@ -47,7 +46,7 @@ export default (props) => {
             fluid={post.heroImage.fluid}
           />
         </div>
-        <div className="wrapper">
+        <div className="post-content">
           <h1 className="section-headline">{post.title}</h1>
           <p
             style={{

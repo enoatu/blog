@@ -915,7 +915,8 @@ export const main = () => {
   let sunrays
   let sunraysTemp
 
-  let ditheringTexture = createTextureAsync('LDR_LLL1_0.png')
+  // let ditheringTexture = createTextureAsync('LDR_LLL1_0.png')
+  let ditheringTexture = createTextureAsync('blog')
 
   const blurProgram = new Program(blurVertexShader, blurShader)
   const copyProgram = new Program(baseVertexShader, copyShader)

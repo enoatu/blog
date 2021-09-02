@@ -1,10 +1,31 @@
-import React from 'react'
 import PropTypes from 'prop-types'
+import { graphql, useStaticQuery } from 'gatsby'
+import get from 'lodash/get'
 
 export default function HTML(props) {
+  const data = useStaticQuery(graphql`
+    query {
+      allContentfulAsset(limit: 10, filter: { title: { eq: "blog-favicon" } }) {
+        nodes {
+          file {
+            url
+          }
+        }
+      }
+    }
+  `)
+  console.log(data)
+  const faivonUrl = get(data, 'allContentfulAsset.nodes[0].file.url')
   return (
     <html {...props.htmlAttributes}>
       <head>
+        <link rel="icon" type="image/vnd.microsoft.icon" href={faivonUrl} />
+        <link
+          rel="shortcut icon"
+          type="image/vnd.microsoft.icon"
+          href={faivonUrl}
+        />
+        <link rel="apple-touch-icon" href={faivonUrl} />
         <script
           dangerouslySetInnerHTML={{
             __html: `

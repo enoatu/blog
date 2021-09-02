@@ -1,4 +1,3 @@
-import React from 'react'
 import '@c/base.css'
 import Container from '@c/container'
 import Navigation from '@c/navigation'

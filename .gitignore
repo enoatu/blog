@@ -68,3 +68,6 @@ public
 
 # netlify
 netlify.toml
+
+# chrome Lighthouse
+lighthouse*

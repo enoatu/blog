@@ -1,4 +1,3 @@
-import React from 'react'
 import Img from 'gatsby-image'
 
 import styles from '@/components/hero.module.css'

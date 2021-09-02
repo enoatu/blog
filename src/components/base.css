@@ -65,7 +65,7 @@ code {
   color: rgb(20, 255, 20);
 }
 
-.wrapper {
+.post-content {
   width: calc(100% - 10vmin);
   margin: 0 auto;
   padding: 5vmin 0;

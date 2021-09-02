@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default () => {
   const [isDraw, setIsDraw] = React.useState(false)
   React.useEffect(() => {
