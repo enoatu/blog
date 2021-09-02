@@ -46,7 +46,7 @@ export default (props) => {
             fluid={post.heroImage.fluid}
           />
         </div>
-        <div className="post-content">
+        <div className="wrapper">
           <h1 className="section-headline">{post.title}</h1>
           <p
             style={{

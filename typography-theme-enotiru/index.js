@@ -37,9 +37,6 @@ const theme = {
     'h1,h2,h3,h4,h5,h6': {
       letterSpacing: '0.02em',
     },
-    '.post-content img': {
-      padding: '0 10px',
-    },
     p: {
       textAlign: 'justify',
       wordBreak: 'break-all',
