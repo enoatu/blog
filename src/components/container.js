@@ -1,6 +1,6 @@
 import WebGlCanvas from '@/components/container/webgl-canvas'
 
-const Container = ({ children }) => {
+export default ({ children }) => {
   return (
     <div>
       {typeof window !== 'undefined' && <WebGlCanvas />}
@@ -8,4 +8,3 @@ const Container = ({ children }) => {
     </div>
   )
 }
-export default Container

@@ -4,6 +4,4 @@ module.exports = {
   semi: false,
   singleQuote: true,
   useTabs: false,
-  jsxBracketSameLine: true,
-  experimentalBabelParserPluginsList: ['jsx', 'typescript'],
 }

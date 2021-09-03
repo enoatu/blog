@@ -1,4 +1,4 @@
-const WebGlCanvas = () => {
+export default () => {
   const [isDraw, setIsDraw] = React.useState(false)
   React.useEffect(() => {
     async function loadData() {
@@ -12,4 +12,3 @@ const WebGlCanvas = () => {
   })
   return <canvas />
 }
-export default WebGlCanvas

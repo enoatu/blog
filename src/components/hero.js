@@ -1,7 +1,8 @@
-import * as styles from '@/components/hero.module.css'
 import Img from 'gatsby-image'
 
-const Hero = ({ data }) => (
+import styles from '@/components/hero.module.css'
+
+export default ({ data }) => (
   <div className={styles.hero}>
     <Img
       className={styles.heroImage}
@@ -15,4 +16,3 @@ const Hero = ({ data }) => (
     </div>
   </div>
 )
-export default Hero

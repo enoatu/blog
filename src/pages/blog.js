@@ -1,11 +1,11 @@
-import * as styles from '@/pages/blog.module.css'
-import ArticlePreview from '@c/article-preview'
-import Layout from '@c/layout'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
 import Helmet from 'react-helmet'
+import get from 'lodash/get'
+import styles from '@/pages/blog.module.css'
+import Layout from '@c/layout'
+import ArticlePreview from '@c/article-preview'
 
-const Blog = (props) => {
+export default (props) => {
   const posts = get(props, 'data.allContentfulBlogPost.edges')
   const siteTitle = get(props, 'props.data.site.siteMetadata.title')
   return (
@@ -34,7 +34,6 @@ const Blog = (props) => {
     </Layout>
   )
 }
-export default Blog
 
 export const pageQuery = graphql`
   query BlogIndexQuery {

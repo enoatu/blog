@@ -1,7 +1,7 @@
-import * as styles from '@/components/navigation.module.css'
 import { Link } from 'gatsby'
+import styles from '@/components/navigation.module.css'
 
-const Navigation = () => (
+export default () => (
   <nav role="navigation">
     <ul className={styles.navigation}>
       <li className={styles.navigationItem}>
@@ -13,4 +13,3 @@ const Navigation = () => (
     </ul>
   </nav>
 )
-export default Navigation
