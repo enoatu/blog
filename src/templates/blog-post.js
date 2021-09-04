@@ -5,7 +5,7 @@ import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '@/components/layout'
 
-import heroStyles from '@/components/hero.module.css'
+import heroStyles from '@/components/hero/index.module.css'
 import postStyles from '@/templates/blog-post.module.css'
 
 export default (props) => {

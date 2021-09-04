@@ -1,6 +1,6 @@
 import Img from 'gatsby-image'
 
-import styles from '@/components/hero.module.css'
+import styles from './index.module.css'
 
 export default ({ data }) => (
   <div className={styles.hero}>
