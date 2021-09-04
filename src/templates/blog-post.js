@@ -46,8 +46,8 @@ export default (props) => {
             fluid={post.heroImage.fluid}
           />
         </div>
-        <div className="wrapper">
-          <h1 className="section-headline">{post.title}</h1>
+        <div className={postStyles.wrapper}>
+          <h1 className={postStyles.title}>{post.title}</h1>
           <p
             style={{
               display: 'block',

@@ -14,7 +14,7 @@ export default (props) => {
       <Helmet>
         <title>{siteTitle}</title>
       </Helmet>
-      <div style={{ width: '100%', height: '100%' }}>
+      <div style={{ width: '100%' }}>
         <Hero data={author.node} />
         <div className="wrapper">
           <h2 className="section-headline">Recent articles</h2>
