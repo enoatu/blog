@@ -1,0 +1,14 @@
+.footer {
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.middleParent {
+  display: inline-block;
+  vertical-align: middle;
+  height: 100px;
+  line-height: 100px;
+}
+.middleChild {
+  display: inline-block;
+  vertical-align: middle;
+}

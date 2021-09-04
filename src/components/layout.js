@@ -1,5 +1,6 @@
 import '@c/base.css'
 import Container from '@c/container'
+import Footer from '@c/footer'
 import Navigation from '@c/navigation'
 
 export default ({ children }) => {
@@ -7,6 +8,7 @@ export default ({ children }) => {
     <Container>
       <Navigation />
       {children}
+      <Footer />
     </Container>
   )
 }
