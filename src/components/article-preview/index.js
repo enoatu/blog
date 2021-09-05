@@ -4,7 +4,7 @@ import styles from './index.module.css'
 
 export default ({ article }) => (
   <div className={styles.preview}>
-    <Img alt="" fluid={article.heroImage.fluid} />
+    <Img alt="" fluid={article.heroImage.fluid} className={styles.img} />
     <h3 className={styles.previewTitle}>
       <Link to={`/blog/${article.slug}`}>{article.title}</Link>
     </h3>

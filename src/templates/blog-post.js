@@ -13,26 +13,18 @@ export default (props) => {
   const siteTitle = get(props, 'data.site.siteMetadata.title')
   const markdownBodyRef = useRef(null)
   useEffect(() => {
-    markdownBodyRef.current.load = () => {
-      document
-        .querySelectorAll(['data-click-count=1'])
-        .forEach((clickCountEl) => {
-          clickCountEl.addEventListener(
-            'click',
-            () => {
-              window.ga(
-                'send',
-                'event',
-                'banner',
-                'click',
-                clickCountEl.href,
-                1
-              )
-            },
-            { once: true }
-          )
-        })
-    }
+    markdownBodyRef.current
+      .querySelectorAll('[data-click-count="1"]')
+      .forEach((clickCountEl) => {
+        clickCountEl.addEventListener(
+          'click',
+          () => {
+            window.ga('send', 'event', 'banner', 'click', clickCountEl.href, 1)
+            console.log('ohge')
+          },
+          { once: true }
+        )
+      })
   }, [])
 
   return (
