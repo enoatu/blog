@@ -20,7 +20,6 @@ export default (props) => {
           'click',
           () => {
             window.ga('send', 'event', 'banner', 'click', clickCountEl.href, 1)
-            console.log('ohge')
           },
           { once: true }
         )
