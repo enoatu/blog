@@ -1,6 +1,6 @@
 // import dat from 'dat.gui'
 // コメント行はGUI操作枠に関係
-export const main = () => {
+export const main = (props = {}) => {
   const canvas = document.querySelector('canvas')
   // Simulation section
   resizeCanvas()
@@ -26,7 +26,7 @@ export const main = () => {
     COLOR_UPDATE_SPEED: 7,
     // COLOR_UPDATE_SPEED: 10,
     PAUSED: false,
-    BACK_COLOR: { r: 0, g: 0, b: 0 },
+    BACK_COLOR: props.BACK_COLOR || { r: 0, g: 0, b: 0 },
     TRANSPARENT: false,
     BLOOM: true,
     BLOOM_ITERATIONS: 8,

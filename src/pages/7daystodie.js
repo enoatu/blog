@@ -17,7 +17,7 @@ const _7daystodie = (props) => {
         <title>{siteTitle}</title>
       </Helmet>
       <div style={{ width: '100%' }}>
-        <div className={styles.hero}>
+        <div className={styles.description}>
           <Img
             className={styles.heroImage}
             alt={top.title}

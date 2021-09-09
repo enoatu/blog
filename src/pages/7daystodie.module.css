@@ -1,6 +1,7 @@
-.hero {
+.description {
   position: relative;
   color: #fff;
+  background-color: #001100;
 }
 
 .heroImage {
