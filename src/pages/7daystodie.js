@@ -1,28 +1,45 @@
 import ArticlePreview from '@/components/article-preview'
-import Hero from '@/components/hero'
+import * as styles from '@/pages/7daystodie.module.css'
 import Layout from '@/components/layout'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
+import Img from 'gatsby-image'
 
-const Index = (props) => {
+const _7daystodie = (props) => {
   const siteTitle = get(props, 'data.site.siteMetadata.title')
-  const posts = get(props, 'data.allContentfulBlogPost.edges')
-  const [author] = get(props, 'data.allContentfulPerson.edges')
+  const posts = get(props, 'data.allContentful7DaysToDie.edges')
+  const { node: top } = get(props, 'data.allContentful7DaysToDieTop.edges')[0]
+
   return (
     <Layout location={props.location}>
       <Helmet>
         <title>{siteTitle}</title>
       </Helmet>
       <div style={{ width: '100%' }}>
-        <Hero data={author.node} />
+        <div className={styles.hero}>
+          <Img
+            className={styles.heroImage}
+            alt={top.title}
+            fluid={top.image[0].fluid}
+          />
+          <div className={styles.heroDetails}>
+            <h3 className={styles.heroHeadline}>{top.name}</h3>
+            <p className={styles.heroTitle}>{top.title}</p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: top.text.childMarkdownRemark.html,
+              }}
+            />
+          </div>
+        </div>
         <div className="wrapper">
           <h2 className="section-headline">Recent articles</h2>
           <ul className="article-list">
             {posts.map(({ node }) => {
               return (
                 <li key={node.slug}>
-                  <ArticlePreview contentType="blog" article={node} />
+                  <ArticlePreview contentType="7daystodie" article={node} />
                 </li>
               )
             })}
@@ -32,16 +49,16 @@ const Index = (props) => {
     </Layout>
   )
 }
-export default Index
+export default _7daystodie
 
 export const pageQuery = graphql`
-  query HomeQuery {
+  query daysQuery {
     site {
       siteMetadata {
         title
       }
     }
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    allContentful7DaysToDie(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           title
@@ -61,17 +78,11 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPerson(
-      filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
-    ) {
+    allContentful7DaysToDieTop {
       edges {
         node {
-          name
-          shortBio {
-            shortBio
-          }
           title
-          heroImage: image {
+          image {
             fluid(
               maxWidth: 1180
               maxHeight: 480
@@ -79,6 +90,11 @@ export const pageQuery = graphql`
               background: "rgb:000000"
             ) {
               ...GatsbyContentfulFluid
+            }
+          }
+          text {
+            childMarkdownRemark {
+              html
             }
           }
         }

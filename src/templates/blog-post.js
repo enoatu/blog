@@ -8,7 +8,9 @@ import { useEffect, useRef } from 'react'
 import Helmet from 'react-helmet'
 
 const BlogPost = (props) => {
-  const post = get(props, 'data.contentfulBlogPost')
+  const post =
+    get(props, 'data.contentfulBlogPost') ||
+    get(props, 'data.contentful7DaysToDie')
   const siteTitle = get(props, 'data.site.siteMetadata.title')
   const markdownBodyRef = useRef(null)
   useEffect(() => {
@@ -63,6 +65,20 @@ export default BlogPost
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
     contentfulBlogPost(slug: { eq: $slug }) {
+      title
+      publishDate(formatString: "YYYY年MM月DD日")
+      heroImage {
+        fluid(maxWidth: 1180, background: "rgb:000000") {
+          ...GatsbyContentfulFluid
+        }
+      }
+      body {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    contentful7DaysToDie(slug: { eq: $slug }) {
       title
       publishDate(formatString: "YYYY年MM月DD日")
       heroImage {
