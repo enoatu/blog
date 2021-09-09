@@ -8,3 +8,5 @@
 - yarn build
 ## deploy
 - netlifyctl deploy -P public
+## attension
+- Because node v16.x.x is failed deploy arround Sharp, .node_verion v14.x.x set.
