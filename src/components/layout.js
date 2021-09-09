@@ -3,7 +3,7 @@ import Container from '@c/container'
 import Footer from '@c/footer'
 import Navigation from '@c/navigation'
 
-export default ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <Container>
       <Navigation />
@@ -12,3 +12,4 @@ export default ({ children }) => {
     </Container>
   )
 }
+export default Layout

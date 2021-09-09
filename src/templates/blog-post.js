@@ -1,14 +1,13 @@
-import { useEffect, useRef } from 'react'
-import { graphql } from 'gatsby'
-import Helmet from 'react-helmet'
-import get from 'lodash/get'
-import Img from 'gatsby-image'
 import Layout from '@/components/layout'
+import * as heroStyles from '@/components/hero/index.module.css'
+import * as postStyles from '@/templates/blog-post.module.css'
+import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import get from 'lodash/get'
+import { useEffect, useRef } from 'react'
+import Helmet from 'react-helmet'
 
-import heroStyles from '@/components/hero/index.module.css'
-import postStyles from '@/templates/blog-post.module.css'
-
-export default (props) => {
+const BlogPost = (props) => {
   const post = get(props, 'data.contentfulBlogPost')
   const siteTitle = get(props, 'data.site.siteMetadata.title')
   const markdownBodyRef = useRef(null)
@@ -28,7 +27,7 @@ export default (props) => {
 
   return (
     <Layout location={props.location}>
-      <div className={postStyles.layoutInner}>
+      <div>
         <Helmet
           title={`${post.title} | ${siteTitle}`}
           meta={[{ name: 'description', content: post.title }]}
@@ -45,8 +44,7 @@ export default (props) => {
           <p
             style={{
               display: 'block',
-            }}
-          >
+            }}>
             {post.publishDate}
           </p>
           <div
@@ -60,6 +58,7 @@ export default (props) => {
     </Layout>
   )
 }
+export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

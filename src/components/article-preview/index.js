@@ -1,9 +1,9 @@
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
-import styles from './index.module.css'
+import * as styles from './index.module.css'
 
-export default ({ article }) => (
-  <div className={styles.preview}>
+const ArticlePreview = ({ article }) => (
+  <div>
     <Img alt="" fluid={article.heroImage.fluid} className={styles.img} />
     <h3 className={styles.previewTitle}>
       <Link to={`/blog/${article.slug}`}>{article.title}</Link>
@@ -16,3 +16,4 @@ export default ({ article }) => (
     />
   </div>
 )
+export default ArticlePreview

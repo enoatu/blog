@@ -1,11 +1,11 @@
-import { graphql } from 'gatsby'
-import get from 'lodash/get'
+import ArticlePreview from '@/components/article-preview'
 import Hero from '@/components/hero'
 import Layout from '@/components/layout'
+import { graphql } from 'gatsby'
+import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import ArticlePreview from '@/components/article-preview'
 
-export default (props) => {
+const Index = (props) => {
   const siteTitle = get(props, 'data.site.siteMetadata.title')
   const posts = get(props, 'data.allContentfulBlogPost.edges')
   const [author] = get(props, 'data.allContentfulPerson.edges')
@@ -32,6 +32,7 @@ export default (props) => {
     </Layout>
   )
 }
+export default Index
 
 export const pageQuery = graphql`
   query HomeQuery {
@@ -77,7 +78,7 @@ export const pageQuery = graphql`
               resizingBehavior: PAD
               background: "rgb:000000"
             ) {
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid
             }
           }
         }

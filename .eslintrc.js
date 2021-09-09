@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: ['plugin:react/recommended', 'standard'],
-  plugins: ['react'],
+  plugins: ['react', '@babel/plugin-syntax-jsx'],
   rules: {
     semi: 'error',
     // let と const の区別を厳格化
@@ -15,6 +15,12 @@ module.exports = {
     // 設定で 出さないように https://ja.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#eslint
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
+  },
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    babelOptions: {
+      presets: ['@babel/preset-react'],
+    },
   },
   settings: {
     react: {
