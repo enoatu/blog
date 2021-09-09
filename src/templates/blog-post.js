@@ -29,7 +29,10 @@ export default (props) => {
   return (
     <Layout location={props.location}>
       <div className={postStyles.layoutInner}>
-        <Helmet title={`${post.title} | ${siteTitle}`} />
+        <Helmet
+          title={`${post.title} | ${siteTitle}`}
+          meta={[{ name: 'description', content: post.title }]}
+        />
         <div className={heroStyles.hero}>
           <Img
             className={heroStyles.heroImage}
