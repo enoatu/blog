@@ -11,24 +11,24 @@
   */
   height: 61.8vh;
   max-height: 400px;
-  margin-bottom: 1.3em;
+  margin-bottom: 1.3rem;
 }
 
 .heroDetails {
-  font-size: 14px;
+  font-size: 1rem;
   width: calc(100% - 10vmin);
   margin: 0 auto;
 }
 
 @media(min-width: 600px) {
   .heroDetails {
-    font-size: 16px;
+    font-size: 1.1rem;
   }
 }
 
 @media(min-width: 1000px) {
   .heroDetails {
-    font-size: 20px;
+    font-size: 1.2rem;
   }
 }
 
@@ -37,7 +37,7 @@
 }
 
 .heroTitle {
-  margin: 1.5em 0;
-  font-size: 1.125em;
+  margin: 1.5rem 0;
+  font-size: 1.125rem;
   font-weight: bold;
 }
