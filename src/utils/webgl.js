@@ -26,7 +26,7 @@ export const main = (props = {}) => {
     COLOR_UPDATE_SPEED: 7,
     // COLOR_UPDATE_SPEED: 10,
     PAUSED: false,
-    BACK_COLOR: props.BACK_COLOR || { r: 0, g: 0, b: 0 },
+    BACK_COLOR: props.baseColor || { r: 0, g: 0, b: 0 },
     TRANSPARENT: false,
     BLOOM: true,
     BLOOM_ITERATIONS: 8,

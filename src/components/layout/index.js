@@ -4,13 +4,13 @@ import Footer from '@c/footer'
 import Navigation from '@c/navigation'
 import * as styles from './index.module.css'
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
   return (
     <>
-      {typeof window !== 'undefined' && <WebGlCanvas />}
+      {typeof window !== 'undefined' && <WebGlCanvas {...props} />}
       <div className={styles.layout}>
         <Navigation />
-        {children}
+        {props.children}
         <Footer />
       </div>
     </>

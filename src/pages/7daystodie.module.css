@@ -1,3 +1,8 @@
+.top {
+  width: calc(100% - 10vmin);
+  margin: 0 5vmin;
+}
+
 .description {
   position: relative;
   color: #fff;

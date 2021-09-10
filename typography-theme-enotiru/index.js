@@ -1,7 +1,7 @@
 const theme = {
   title: 'japanese-riywo',
   baseFontSize: '16px',
-  baseLineHeight: 1.7,
+  baseLineHeight: 1.0,
   scaleRatio: 2.3,
   googleFonts: [
     {
@@ -38,13 +38,13 @@ const theme = {
       letterSpacing: '0.02rem',
     },
     h1: {
-      fontSize: '2rem',
+      fontSize: '2.3rem',
     },
     h2: {
-      fontSize: '1.8rem',
+      fontSize: '2.0rem',
     },
     h3: {
-      fontSize: '1.6rem',
+      fontSize: '1.7rem',
     },
     h4: {
       fontSize: '1.4rem',

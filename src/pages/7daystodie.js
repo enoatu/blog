@@ -12,11 +12,11 @@ const _7daystodie = (props) => {
   const { node: top } = get(props, 'data.allContentful7DaysToDieTop.edges')[0]
 
   return (
-    <Layout location={props.location}>
+    <Layout location={props.location} baseColor={{ r: 150, g: 0, b: 0 }}>
       <Helmet>
         <title>{siteTitle}</title>
       </Helmet>
-      <div style={{ width: '100%' }}>
+      <div className={styles.top}>
         <div className={styles.description}>
           <Img
             className={styles.heroImage}
