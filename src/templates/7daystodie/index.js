@@ -1,6 +1,7 @@
-import Layout from '@/components/layout'
-import * as heroStyles from '@/components/hero/index.module.css'
-import * as postStyles from '@/templates/blog-post.module.css'
+import Layout from '@c/layout'
+import { siteTitle } from '@/config'
+import * as heroStyles from '@c/hero/index.module.css'
+import * as postStyles from './index.module.css'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import get from 'lodash/get'
@@ -8,10 +9,7 @@ import { useEffect, useRef } from 'react'
 import Helmet from 'react-helmet'
 
 const BlogPost = (props) => {
-  const post =
-    get(props, 'data.contentfulBlogPost') ||
-    get(props, 'data.contentful7DaysToDie')
-  const siteTitle = get(props, 'data.site.siteMetadata.title')
+  const post = get(props, 'data.contentful7DaysToDie')
   const markdownBodyRef = useRef(null)
   useEffect(() => {
     markdownBodyRef.current
@@ -28,7 +26,7 @@ const BlogPost = (props) => {
   }, [])
 
   return (
-    <Layout location={props.location}>
+    <Layout>
       <div>
         <Helmet
           title={`${post.title} | ${siteTitle}`}
@@ -63,21 +61,7 @@ const BlogPost = (props) => {
 export default BlogPost
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    contentfulBlogPost(slug: { eq: $slug }) {
-      title
-      publishDate(formatString: "YYYY年MM月DD日")
-      heroImage {
-        fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
-        }
-      }
-      body {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
+  query _7daystodiePosts($slug: String!) {
     contentful7DaysToDie(slug: { eq: $slug }) {
       title
       publishDate(formatString: "YYYY年MM月DD日")

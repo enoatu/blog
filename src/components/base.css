@@ -8,8 +8,6 @@
 
 html {
   font-size: 16px;
-  overflow: hidden;
-  background-color: #000;
 }
 @media screen and (max-width: 480px) {
   html {
@@ -28,6 +26,9 @@ html, body {
 }
 
 body {
+  overflow: hidden;
+  background-color: #000;
+  box-sizing: border-box;
   font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
   line-height: 1.65;
   margin: 0;
@@ -98,7 +99,6 @@ code {
  *
  */
 .section-headline {
-  padding: 0 5vmin;
  margin: 5vmin;
   border-bottom: 1px solid #ddd;
 }
@@ -126,4 +126,18 @@ code {
 
 .list-inline li {
   display: inline-block;
+}
+
+/* markdown */
+.markdown p {
+  margin: 0.5rem 0;
+}
+.markdown img {
+  width: 100%;
+}
+.markdown pre {
+  margin: 0.7rem 0;
+}
+.markdown code {
+  font-size: 1rem;
 }

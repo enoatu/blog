@@ -23,9 +23,6 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
-  siteMetadata: {
-    title: 'enoatuのブログ',
-  },
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet',

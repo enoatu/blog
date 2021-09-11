@@ -1,32 +1,47 @@
-import ArticlePreview from '@/components/article-preview'
+import { siteTitle } from '@/config'
+import ArticlePreview from '@c/article-preview'
 import * as styles from '@/pages/7daystodie.module.css'
-import Layout from '@/components/layout'
+import Layout from '@c/layout'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
+import * as baseStyles from '@c/base.css'
 
 const _7daystodie = (props) => {
-  const siteTitle = get(props, 'data.site.siteMetadata.title')
   const posts = get(props, 'data.allContentful7DaysToDie.edges')
   const { node: top } = get(props, 'data.allContentful7DaysToDieTop.edges')[0]
-
+  const faviconUrl = get(props, 'data.favicon.nodes[0].file.url')
+  const logo = get(props, 'data.logo.nodes[0]')
   return (
-    <Layout location={props.location} baseColor={{ r: 150, g: 0, b: 0 }}>
+    <Layout baseColor={{ r: 150, g: 0, b: 0 }} logo={logo}>
       <Helmet>
-        <title>{siteTitle}</title>
+        <title>7DaysToDie | {siteTitle}</title>
+        <link
+          rel="shortcut icon"
+          type="image/vnd.microsoft.icon"
+          href={faviconUrl}
+        />
+        <link rel="icon" type="image/vnd.microsoft.icon" href={faviconUrl} />
+        <link rel="apple-touch-icon" href={faviconUrl} />
       </Helmet>
       <div className={styles.top}>
         <div className={styles.description}>
-          <Img
-            className={styles.heroImage}
-            alt={top.title}
-            fluid={top.image[0].fluid}
-          />
+          {top.image.map((image, i) => {
+            return (
+              <Img
+                key={i}
+                className={styles.heroImage}
+                alt={image.title}
+                fluid={image.fluid}
+              />
+            )
+          })}
           <div className={styles.heroDetails}>
             <h3 className={styles.heroHeadline}>{top.name}</h3>
             <p className={styles.heroTitle}>{top.title}</p>
             <div
+              className="markdown"
               dangerouslySetInnerHTML={{
                 __html: top.text.childMarkdownRemark.html,
               }}
@@ -53,11 +68,6 @@ export default _7daystodie
 
 export const pageQuery = graphql`
   query daysQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allContentful7DaysToDie(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
@@ -98,6 +108,27 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    favicon: allContentfulAsset(
+      limit: 10
+      filter: { title: { eq: "blog-favicon-genkaimyocyo" } }
+    ) {
+      nodes {
+        file {
+          url
+        }
+      }
+    }
+    logo: allContentfulAsset(
+      limit: 1
+      filter: { title: { eq: "blog-logo-genkaimyocyo-white" } }
+    ) {
+      nodes {
+        fluid(maxWidth: 200, background: "rgb:000000") {
+          ...GatsbyContentfulFluid
+        }
+        title
       }
     }
   }

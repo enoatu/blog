@@ -1,7 +1,6 @@
 .hero {
   position: relative;
   color: #fff;
-  text-align: center;
 }
 
 .heroImage {
@@ -34,6 +33,7 @@
 
 .heroHeadline {
   margin: 0;
+  text-align: center;
 }
 
 .heroTitle {

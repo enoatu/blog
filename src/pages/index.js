@@ -1,18 +1,27 @@
+import { siteTitle } from '@/config'
 import ArticlePreview from '@/components/article-preview'
 import Hero from '@/components/hero'
 import Layout from '@/components/layout'
-import { graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 const Index = (props) => {
-  const siteTitle = get(props, 'data.site.siteMetadata.title')
   const posts = get(props, 'data.allContentfulBlogPost.edges')
   const [author] = get(props, 'data.allContentfulPerson.edges')
+  const faviconUrl = get(props, 'data.favicon.nodes[0].file.url')
+  const logo = get(props, 'data.logo.nodes[0]')
   return (
-    <Layout location={props.location}>
+    <Layout logo={logo}>
       <Helmet>
         <title>{siteTitle}</title>
+        <link
+          rel="shortcut icon"
+          type="image/vnd.microsoft.icon"
+          href={faviconUrl}
+        />
+        <link rel="icon" type="image/vnd.microsoft.icon" href={faviconUrl} />
+        <link rel="apple-touch-icon" href={faviconUrl} />
       </Helmet>
       <div style={{ width: '100%' }}>
         <Hero data={author.node} />
@@ -36,11 +45,6 @@ export default Index
 
 export const pageQuery = graphql`
   query HomeQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
@@ -82,6 +86,27 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    favicon: allContentfulAsset(
+      limit: 1
+      filter: { title: { eq: "blog-favicon-soukoumyocyo" } }
+    ) {
+      nodes {
+        file {
+          url
+        }
+      }
+    }
+    logo: allContentfulAsset(
+      limit: 1
+      filter: { title: { eq: "blog-logo-soukoumyocho-white" } }
+    ) {
+      nodes {
+        fluid(maxWidth: 200, background: "rgb:000000") {
+          ...GatsbyContentfulFluid
+        }
+        title
       }
     }
   }

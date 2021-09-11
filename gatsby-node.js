@@ -6,7 +6,6 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
 
   return new Promise((resolve, reject) => {
-    const template = path.resolve('./src/templates/blog-post.js')
     resolve(
       graphql(
         `
@@ -39,7 +38,7 @@ exports.createPages = ({ graphql, actions }) => {
         blogPosts.forEach((post) => {
           createPage({
             path: `/blog/${post.node.slug}/`,
-            component: template,
+            component: path.resolve('./src/templates/blog/index.js'),
             context: {
               slug: post.node.slug,
             },
@@ -49,7 +48,7 @@ exports.createPages = ({ graphql, actions }) => {
         _7daystodiePosts.forEach((post) => {
           createPage({
             path: `/7daystodie/${post.node.slug}/`,
-            component: template,
+            component: path.resolve('./src/templates/7daystodie/index.js'),
             context: {
               slug: post.node.slug,
             },
