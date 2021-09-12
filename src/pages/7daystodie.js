@@ -27,16 +27,11 @@ const _7daystodie = (props) => {
       </Helmet>
       <div className={styles.top}>
         <div className={styles.description}>
-          {top.image.map((image, i) => {
-            return (
-              <Img
-                key={i}
-                className={styles.heroImage}
-                alt={image.title}
-                fluid={image.fluid}
-              />
-            )
-          })}
+          <Img
+            className={styles.heroImage}
+            alt={top.image[0].title}
+            fluid={top.image[0].fluid}
+          />
           <div className={styles.heroDetails}>
             <h3 className={styles.heroHeadline}>{top.name}</h3>
             <p className={styles.heroTitle}>{top.title}</p>
