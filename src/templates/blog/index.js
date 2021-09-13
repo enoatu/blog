@@ -5,11 +5,15 @@ import * as postStyles from './index.module.css'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { useEffect } from 'react'
+import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
 const BlogPost = (props) => {
+  const post = get(props, 'data.blogPosts')
+  const faviconUrl = get(props, 'data.favicon.nodes[0].file.url')
+  const logo = get(props, 'data.logo.nodes[0]')
   return (
-    <Layout>
+    <Layout logo={logo}>
       <div>
         <Helmet
           title={`${post.title} | ${siteTitle}`}
@@ -44,7 +48,7 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
-    contentfulBlogPost(slug: { eq: $slug }) {
+    blogPosts: contentfulBlogPost(slug: { eq: $slug }) {
       title
       publishDate(formatString: "YYYY年MM月DD日")
       heroImage {
@@ -58,18 +62,25 @@ export const pageQuery = graphql`
         }
       }
     }
-    contentful7DaysToDie(slug: { eq: $slug }) {
-      title
-      publishDate(formatString: "YYYY年MM月DD日")
-      heroImage {
-        fluid(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+    favicon: allContentfulAsset(
+      limit: 1
+      filter: { title: { eq: "blog-favicon-genkaimyocyo" } }
+    ) {
+      nodes {
+        file {
+          url
         }
       }
-      body {
-        childMarkdownRemark {
-          html
+    }
+    logo: allContentfulAsset(
+      limit: 1
+      filter: { title: { eq: "blog-logo-genkaimyocyo-white" } }
+    ) {
+      nodes {
+        fluid(maxWidth: 200, background: "rgb:000000") {
+          ...GatsbyContentfulFluid
         }
+        title
       }
     }
   }

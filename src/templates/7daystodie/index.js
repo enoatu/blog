@@ -11,6 +11,8 @@ import Helmet from 'react-helmet'
 const BlogPost = (props) => {
   const post = get(props, 'data.contentful7DaysToDie')
   const markdownBodyRef = useRef(null)
+  const faviconUrl = get(props, 'data.favicon.nodes[0].file.url')
+  const logo = get(props, 'data.logo.nodes[0]')
   useEffect(() => {
     markdownBodyRef.current
       .querySelectorAll('[data-click-count="1"]')
@@ -26,7 +28,7 @@ const BlogPost = (props) => {
   }, [])
 
   return (
-    <Layout>
+    <Layout logo={logo}>
       <div>
         <Helmet
           title={`${post.title} | ${siteTitle}`}
@@ -74,6 +76,27 @@ export const pageQuery = graphql`
         childMarkdownRemark {
           html
         }
+      }
+    }
+    favicon: allContentfulAsset(
+      limit: 1
+      filter: { title: { eq: "blog-favicon-genkaimyocyo" } }
+    ) {
+      nodes {
+        file {
+          url
+        }
+      }
+    }
+    logo: allContentfulAsset(
+      limit: 1
+      filter: { title: { eq: "blog-logo-genkaimyocyo-white" } }
+    ) {
+      nodes {
+        fluid(maxWidth: 200, background: "rgb:000000") {
+          ...GatsbyContentfulFluid
+        }
+        title
       }
     }
   }
