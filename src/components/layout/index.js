@@ -9,9 +9,11 @@ const Layout = (props) => {
     <>
       {typeof window !== 'undefined' && <WebGlCanvas {...props} />}
       <div className={styles.layout}>
-        <Navigation {...props} />
-        {props.children}
-        <Footer />
+        <div className={styles.layoutInner}>
+          <Navigation {...props} />
+          {props.children}
+          <Footer />
+        </div>
       </div>
     </>
   )

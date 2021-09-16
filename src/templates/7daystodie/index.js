@@ -50,6 +50,7 @@ const BlogPost = (props) => {
             {post.publishDate}
           </p>
           <div
+            className="markdown"
             ref={markdownBodyRef}
             dangerouslySetInnerHTML={{
               __html: post.body.childMarkdownRemark.html,

@@ -41,6 +41,7 @@ canvas {
 img {
   display: block;
   margin: 0;
+  /*width: 100%; twitter等の画像が潰れる ので .markdown imgに書く*/
 }
 
 h1, h2, h3, a, p, small, li, strong {
@@ -70,14 +71,6 @@ h5 {
 
 a, p, small, li, strong {
   font-size: 1rem;
-}
-
-pre {
-  background: #000;
-}
-
-code {
-  color: rgb(20, 255, 20);
 }
 
 .wrapper {
@@ -122,7 +115,9 @@ code {
   width: 100%;
 }
 .markdown pre {
+  color: rgb(20, 255, 20);
   margin: 0.7rem 0;
+  background: #000;
 }
 
 @media screen and (max-width: 860px) {
