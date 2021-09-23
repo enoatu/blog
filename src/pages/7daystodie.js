@@ -14,7 +14,7 @@ const _7daystodie = (props) => {
       type="7dtd"
       description={null}
       baseColor={{ r: 150, g: 0, b: 0 }}
-      ogImageUrl={props.data.top.edges[0].node.image.file.url}
+      ogImageUrl={props.data.top.edges[0].node.image.fluid.src}
       faviconUrl={props.data.favicon.nodes[0].file.url}
       logoFluid={props.data.logo.nodes[0].fluid}
       {...props}>
@@ -85,9 +85,6 @@ export const pageQuery = graphql`
               ...GatsbyContentfulFluid
             }
             title
-            file {
-              url
-            }
           }
           text {
             childMarkdownRemark {

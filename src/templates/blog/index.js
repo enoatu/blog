@@ -11,7 +11,7 @@ const BlogPost = (props) => {
       pageTitle={post.title}
       description={post.description.description}
       baseColor={{ r: 0, g: 0, b: 0 }}
-      ogImageUrl={post.heroImage.file.url}
+      ogImageUrl={post.heroImage.fluid.src}
       faviconUrl={props.data.favicon.nodes[0].file.url}
       logoFluid={props.data.logo.nodes[0].fluid}
       {...props}>
@@ -48,9 +48,6 @@ export const pageQuery = graphql`
           ...GatsbyContentfulFluid
         }
         title
-        file {
-          url
-        }
       }
       body {
         childMarkdownRemark {

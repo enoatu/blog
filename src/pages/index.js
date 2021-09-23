@@ -8,11 +8,11 @@ const Index = (props) => {
   const [author] = props.data.top.edges
   return (
     <Layout
-      pageTitle="ブログ"
+      pageTitle={null}
       type="blog"
       description={null}
       baseColor={{ r: 0, g: 0, b: 0 }}
-      ogImageUrl={props.data.top.edges[0].node.image.file.url}
+      ogImageUrl={props.data.top.edges[0].node.image.fluid.src}
       faviconUrl={props.data.favicon.nodes[0].file.url}
       logoFluid={props.data.logo.nodes[0].fluid}
       {...props}>
@@ -72,9 +72,6 @@ export const pageQuery = graphql`
               background: "rgb:000000"
             ) {
               ...GatsbyContentfulFluid
-            }
-            file {
-              url
             }
           }
         }

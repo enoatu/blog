@@ -21,7 +21,7 @@ const Head = ({ faviconUrl, ogImageUrl, ...props }) => {
 
       <meta
         name="keywords"
-        content="enoatu,enotiru,program,7daystodie,7dtd,7d2d,revenhearst,zombie"
+        content="enoatu,program,7daystodie,7dtd,7d2d,revenhearst,zombie"
       />
       <meta name="description" content={description} />
       <meta name="author" content="enoatu" />
@@ -44,7 +44,6 @@ const Head = ({ faviconUrl, ogImageUrl, ...props }) => {
 }
 
 Head.propTypes = {
-  pageTitle: PropTypes.string.isRequired,
   ogImageUrl: PropTypes.string.isRequired,
   faviconUrl: PropTypes.string.isRequired,
 }
