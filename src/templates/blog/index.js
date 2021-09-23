@@ -44,7 +44,12 @@ export const pageQuery = graphql`
       title
       publishDate(formatString: "YYYY年MM月DD日")
       heroImage {
-        fluid(maxWidth: 1180, background: "rgb:000000") {
+        fluid(
+          maxWidth: 1180
+          maxHeight: 480
+          resizingBehavior: PAD
+          background: "rgb:000000"
+        ) {
           ...GatsbyContentfulFluid
         }
         title
