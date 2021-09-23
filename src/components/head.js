@@ -25,14 +25,14 @@ const Head = ({ faviconUrl, ogImageUrl, ...props }) => {
       />
       <meta name="description" content={description} />
       <meta name="author" content="enoatu" />
-      <meta name="og:type" content="website" />
-      <meta name="og:title" content={title} />
-      <meta name="og:description" content={description} />
-      <meta name="og:site_name" content={siteTitle} />
-      {/*<meta name="og:url" content={}/>*/}
-      <meta name="og:image" content={ogImageUrl} />
-      <meta name="og:locale" content="ja_JP" />
-      <meta name="fb:app_id" content={fbAppId} />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:site_name" content={siteTitle} />
+      {/*<meta property="og:url" content={}/>*/}
+      <meta property="og:image" content={ogImageUrl} />
+      <meta property="og:locale" content="ja_JP" />
+      <meta property="fb:app_id" content={fbAppId} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
