@@ -6,12 +6,10 @@
   font-display: swap;
 }
 
-html {
-  font-size: 16px;
-}
 html, body {
   overflow: hidden;
   background-color: #000;
+  font-size: 18px;
 }
 
 body {
@@ -49,23 +47,23 @@ h1, h2, h3, a, p, small, li, strong {
 }
 
 h1 {
-  font-size: 2.2rem;
-  font-weight: normal;
-}
-h2 {
   font-size: 2.0rem;
   font-weight: normal;
 }
+h2 {
+  font-size: 1.8rem;
+  font-weight: normal;
+}
 h3 {
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   font-weight: normal;
 }
 h4 {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   font-weight: normal;
 }
 h5 {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: normal;
 }
 
@@ -112,7 +110,7 @@ a, p, small, li, strong {
   margin: 0.5rem 0;
 }
 .markdown img {
-  width: 100%;
+  max-width: 800px;
 }
 .markdown pre {
   color: rgb(20, 255, 20);
@@ -122,11 +120,14 @@ a, p, small, li, strong {
 
 @media screen and (max-width: 860px) {
   html {
-    font-size: 18px;
+    font-size: 17px;
   }
   .markdown pre {
     font-size: 0.6rem;
     white-space: pre-wrap ;
+  }
+  .markdown img {
+    max-width: 100%;
   }
 }
 

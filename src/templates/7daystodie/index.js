@@ -1,6 +1,5 @@
 import Layout from '@c/layout'
-import * as heroStyles from '@c/hero/index.module.css'
-import * as postStyles from './index.module.css'
+import * as styles from './index.module.css'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { useEffect, useRef } from 'react'
@@ -34,8 +33,8 @@ const BlogPost = (props) => {
       <div>
         <Img alt={post.title} fluid={post.heroImage.fluid} />
       </div>
-      <div className={postStyles.wrapper}>
-        <h1 className={postStyles.title}>{post.title}</h1>
+      <div className={styles.wrapper}>
+        <h1 className={styles.title}>{post.title}</h1>
         <p
           style={{
             display: 'block',
@@ -65,7 +64,12 @@ export const pageQuery = graphql`
         description
       }
       heroImage {
-        fluid(maxHeight: 480, resizingBehavior: PAD, background: "rgb:000000") {
+        fluid(
+          maxWidth: 1180
+          maxHeight: 480
+          resizingBehavior: PAD
+          background: "rgb:000000"
+        ) {
           ...GatsbyContentfulFluid
         }
         file {
