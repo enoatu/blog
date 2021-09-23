@@ -1,40 +1,28 @@
-import { siteTitle } from '@/config'
 import ArticlePreview from '@c/article-preview'
 import * as styles from '@/pages/7daystodie.module.css'
 import Layout from '@c/layout'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
-import Helmet from 'react-helmet'
 import Img from 'gatsby-image'
 import * as baseStyles from '@c/base.css'
 
 const _7daystodie = (props) => {
-  const posts = get(props, 'data.allContentful7DaysToDie.edges')
-  const { node: top } = get(props, 'data.allContentful7DaysToDieTop.edges')[0]
-  const faviconUrl = get(props, 'data.favicon.nodes[0].file.url')
-  const logo = get(props, 'data.logo.nodes[0]')
+  const posts = props.data.posts.edges
+  const { node: top } = props.data.top.edges[0]
   return (
-    <Layout baseColor={{ r: 150, g: 0, b: 0 }} logo={logo}>
-      <Helmet>
-        <title>7DaysToDie | {siteTitle}</title>
-        <link
-          rel="shortcut icon"
-          type="image/vnd.microsoft.icon"
-          href={faviconUrl}
-        />
-        <link rel="icon" type="image/vnd.microsoft.icon" href={faviconUrl} />
-        <link rel="apple-touch-icon" href={faviconUrl} />
-      </Helmet>
+    <Layout
+      pageTitle="7DaysToDie"
+      type="7dtd"
+      description={null}
+      baseColor={{ r: 150, g: 0, b: 0 }}
+      ogImageUrl={props.data.top.edges[0].node.image.file.url}
+      faviconUrl={props.data.favicon.nodes[0].file.url}
+      logoFluid={props.data.logo.nodes[0].fluid}
+      {...props}>
       <div className={styles.top}>
         <div className={styles.description}>
-          <Img
-            className={styles.heroImage}
-            alt={top.image[0].title}
-            fluid={top.image[0].fluid}
-          />
-          <div className={styles.heroDetails}>
-            <h3 className={styles.heroHeadline}>{top.name}</h3>
-            <p className={styles.heroTitle}>{top.title}</p>
+          <Img alt={top.image.title} fluid={top.image.fluid} />
+          <div className={styles.descriptionDetail}>
+            <h1 className={styles.descriptionTitle}>{top.title}</h1>
             <div
               className="markdown"
               dangerouslySetInnerHTML={{
@@ -63,7 +51,9 @@ export default _7daystodie
 
 export const pageQuery = graphql`
   query daysQuery {
-    allContentful7DaysToDie(sort: { fields: [publishDate], order: DESC }) {
+    posts: allContentful7DaysToDie(
+      sort: { fields: [publishDate], order: DESC }
+    ) {
       edges {
         node {
           title
@@ -76,14 +66,12 @@ export const pageQuery = graphql`
             }
           }
           description {
-            childMarkdownRemark {
-              html
-            }
+            description
           }
         }
       }
     }
-    allContentful7DaysToDieTop {
+    top: allContentful7DaysToDieTop {
       edges {
         node {
           title
@@ -95,6 +83,10 @@ export const pageQuery = graphql`
               background: "rgb:000000"
             ) {
               ...GatsbyContentfulFluid
+            }
+            title
+            file {
+              url
             }
           }
           text {

@@ -48,8 +48,8 @@ h1, h2, h3, a, p, small, li, strong {
   color: #ccc;
 }
 
-h1,{
-  font-size: 2.3rem;
+h1 {
+  font-size: 2.2rem;
   font-weight: normal;
 }
 h2 {

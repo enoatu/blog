@@ -1,51 +1,30 @@
-.top {
-  width: calc(100% - 10vmin);
-  margin: 0 5vmin;
-}
-
 .description {
   position: relative;
   color: #fff;
-  background-color: #46464661
 }
 
-.heroImage {
-  /*
-    Ensure golden ratio for the hero size while limiting it to some extend to
-    the viewport width
-  */
-  height: 61.8vh;
-  max-height: 400px;
-  margin-bottom: 1.3rem;
+.descriptionTitle {
+  text-align: center;
 }
 
-.heroDetails {
+.descriptionDetail {
   font-size: 1.3rem;
   width: calc(100% - 10vmin);
   margin: 0 auto;
 }
 
 @media(max-width: 600px) {
-  .heroDetails {
+  .descriptionDetail {
     font-size: 1.4rem;
   }
 }
 
 @media(max-width: 1000px) {
-  .heroDetails {
+  .descriptionDetail {
     font-size: 1.5rem;
-  }
-  .heroImage {
-    max-height: 300px;
   }
 }
 
 .heroHeadline {
   margin: 0;
-}
-
-.heroTitle {
-  margin: 1.5rem 0;
-  font-size: 1.125rem;
-  font-weight: bold;
 }

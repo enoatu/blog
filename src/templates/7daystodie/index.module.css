@@ -1,22 +1,16 @@
-.hero {
+.description {
   position: relative;
   color: #fff;
   text-align: center;
 }
 
-.heroImage {
-  height: 61.8vh;
-  max-height: 400px;
-}
-
 .title {
   margin: 0 0 5vmin 0;
   border-bottom: 1px solid #ddd;
-  font-size: 1.3rem;
+  text-align: center;
 }
 
 .wrapper {
-  background-color: rgb(255 255 255 / 20%);
   width: calc(100% - 10vmin);
   margin: 0 auto;
   padding: 5vmin;

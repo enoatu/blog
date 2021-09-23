@@ -1,46 +1,37 @@
 import Layout from '@c/layout'
-import { siteTitle } from '@/config'
 import * as heroStyles from '@c/hero/index.module.css'
 import * as postStyles from './index.module.css'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { useEffect } from 'react'
-import get from 'lodash/get'
-import Helmet from 'react-helmet'
 
 const BlogPost = (props) => {
-  const post = get(props, 'data.blogPosts')
-  const faviconUrl = get(props, 'data.favicon.nodes[0].file.url')
-  const logo = get(props, 'data.logo.nodes[0]')
+  const post = props.data.blogPosts
   return (
-    <Layout logo={logo}>
+    <Layout
+      pageTitle={post.title}
+      description={post.description.description}
+      baseColor={{ r: 0, g: 0, b: 0 }}
+      ogImageUrl={post.heroImage.file.url}
+      faviconUrl={props.data.favicon.nodes[0].file.url}
+      logoFluid={props.data.logo.nodes[0].fluid}
+      {...props}>
       <div>
-        <Helmet
-          title={`${post.title} | ${siteTitle}`}
-          meta={[{ name: 'description', content: post.title }]}
+        <Img alt={post.title} fluid={post.heroImage.fluid} />
+      </div>
+      <div className={postStyles.wrapper}>
+        <h1 className={postStyles.title}>{post.title}</h1>
+        <p
+          style={{
+            display: 'block',
+          }}>
+          {post.publishDate}
+        </p>
+        <div
+          className="markdown"
+          dangerouslySetInnerHTML={{
+            __html: post.body.childMarkdownRemark.html,
+          }}
         />
-        <div className={heroStyles.hero}>
-          <Img
-            className={heroStyles.heroImage}
-            alt={post.title}
-            fluid={post.heroImage.fluid}
-          />
-        </div>
-        <div className={postStyles.wrapper}>
-          <h1 className={postStyles.title}>{post.title}</h1>
-          <p
-            style={{
-              display: 'block',
-            }}>
-            {post.publishDate}
-          </p>
-          <div
-            className="markdown"
-            dangerouslySetInnerHTML={{
-              __html: post.body.childMarkdownRemark.html,
-            }}
-          />
-        </div>
       </div>
     </Layout>
   )
@@ -56,11 +47,18 @@ export const pageQuery = graphql`
         fluid(maxWidth: 1180, background: "rgb:000000") {
           ...GatsbyContentfulFluid
         }
+        title
+        file {
+          url
+        }
       }
       body {
         childMarkdownRemark {
           html
         }
+      }
+      description {
+        description
       }
     }
     favicon: allContentfulAsset(

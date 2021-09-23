@@ -9,11 +9,7 @@ const ArticlePreview = ({ article, contentType }) => (
       <Link to={`/${contentType}/${article.slug}`}>{article.title}</Link>
     </h3>
     <small>{article.publishDate}</small>
-    <p
-      dangerouslySetInnerHTML={{
-        __html: article.description.childMarkdownRemark.html,
-      }}
-    />
+    <p>{article.description.description}</p>
   </div>
 )
 export default ArticlePreview

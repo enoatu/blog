@@ -1,18 +1,13 @@
 import Layout from '@c/layout'
-import { siteTitle } from '@/config'
 import * as heroStyles from '@c/hero/index.module.css'
 import * as postStyles from './index.module.css'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import get from 'lodash/get'
 import { useEffect, useRef } from 'react'
-import Helmet from 'react-helmet'
 
 const BlogPost = (props) => {
-  const post = get(props, 'data.contentful7DaysToDie')
+  const post = props.data.contentful7DaysToDie
   const markdownBodyRef = useRef(null)
-  const faviconUrl = get(props, 'data.favicon.nodes[0].file.url')
-  const logo = get(props, 'data.logo.nodes[0]')
   useEffect(() => {
     markdownBodyRef.current
       .querySelectorAll('[data-click-count="1"]')
@@ -28,35 +23,32 @@ const BlogPost = (props) => {
   }, [])
 
   return (
-    <Layout logo={logo}>
+    <Layout
+      pageTitle={post.title}
+      description={post.description.description}
+      baseColor={{ r: 150, g: 0, b: 0 }}
+      ogImageUrl={post.heroImage.file.url}
+      faviconUrl={props.data.favicon.nodes[0].file.url}
+      logoFluid={props.data.logo.nodes[0].fluid}
+      {...props}>
       <div>
-        <Helmet
-          title={`${post.title} | ${siteTitle}`}
-          meta={[{ name: 'description', content: post.title }]}
+        <Img alt={post.title} fluid={post.heroImage.fluid} />
+      </div>
+      <div className={postStyles.wrapper}>
+        <h1 className={postStyles.title}>{post.title}</h1>
+        <p
+          style={{
+            display: 'block',
+          }}>
+          {post.publishDate}
+        </p>
+        <div
+          className="markdown"
+          ref={markdownBodyRef}
+          dangerouslySetInnerHTML={{
+            __html: post.body.childMarkdownRemark.html,
+          }}
         />
-        <div className={heroStyles.hero}>
-          <Img
-            className={heroStyles.heroImage}
-            alt={post.title}
-            fluid={post.heroImage.fluid}
-          />
-        </div>
-        <div className={postStyles.wrapper}>
-          <h1 className={postStyles.title}>{post.title}</h1>
-          <p
-            style={{
-              display: 'block',
-            }}>
-            {post.publishDate}
-          </p>
-          <div
-            className="markdown"
-            ref={markdownBodyRef}
-            dangerouslySetInnerHTML={{
-              __html: post.body.childMarkdownRemark.html,
-            }}
-          />
-        </div>
       </div>
     </Layout>
   )
@@ -68,9 +60,16 @@ export const pageQuery = graphql`
     contentful7DaysToDie(slug: { eq: $slug }) {
       title
       publishDate(formatString: "YYYY年MM月DD日")
+      tags
+      description {
+        description
+      }
       heroImage {
-        fluid(maxWidth: 1180, background: "rgb:000000") {
+        fluid(maxHeight: 480, resizingBehavior: PAD, background: "rgb:000000") {
           ...GatsbyContentfulFluid
+        }
+        file {
+          url
         }
       }
       body {

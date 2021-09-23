@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import * as styles from './index.module.css'
 import Img from 'gatsby-image'
 
@@ -6,7 +7,7 @@ const Hero = ({ data }) => (
     <Img
       className={styles.heroImage}
       alt={data.name}
-      fluid={data.heroImage.fluid}
+      fluid={data.image.fluid}
     />
     <div className={styles.heroDetails}>
       <h1 className={styles.heroHeadline}>{data.name}</h1>
@@ -15,4 +16,8 @@ const Hero = ({ data }) => (
     </div>
   </div>
 )
+
+PropTypes.Hero = {
+  data: PropTypes.object.isRequired,
+}
 export default Hero

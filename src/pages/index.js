@@ -1,42 +1,33 @@
-import { siteTitle } from '@/config'
 import ArticlePreview from '@/components/article-preview'
 import Hero from '@/components/hero'
 import Layout from '@/components/layout'
-import { graphql, useStaticQuery } from 'gatsby'
-import get from 'lodash/get'
-import Helmet from 'react-helmet'
+import { graphql } from 'gatsby'
 
 const Index = (props) => {
-  const posts = get(props, 'data.allContentfulBlogPost.edges')
-  const [author] = get(props, 'data.allContentfulPerson.edges')
-  const faviconUrl = get(props, 'data.favicon.nodes[0].file.url')
-  const logo = get(props, 'data.logo.nodes[0]')
+  const posts = props.data.posts.edges
+  const [author] = props.data.top.edges
   return (
-    <Layout logo={logo}>
-      <Helmet>
-        <title>{siteTitle}</title>
-        <link
-          rel="shortcut icon"
-          type="image/vnd.microsoft.icon"
-          href={faviconUrl}
-        />
-        <link rel="icon" type="image/vnd.microsoft.icon" href={faviconUrl} />
-        <link rel="apple-touch-icon" href={faviconUrl} />
-      </Helmet>
-      <div style={{ width: '100%' }}>
-        <Hero data={author.node} />
-        <div className="wrapper">
-          <h2 className="section-headline">Recent articles</h2>
-          <ul className="article-list">
-            {posts.map(({ node }) => {
-              return (
-                <li key={node.slug}>
-                  <ArticlePreview contentType="blog" article={node} />
-                </li>
-              )
-            })}
-          </ul>
-        </div>
+    <Layout
+      pageTitle="ブログ"
+      type="blog"
+      description={null}
+      baseColor={{ r: 0, g: 0, b: 0 }}
+      ogImageUrl={props.data.top.edges[0].node.image.file.url}
+      faviconUrl={props.data.favicon.nodes[0].file.url}
+      logoFluid={props.data.logo.nodes[0].fluid}
+      {...props}>
+      <Hero data={author.node} />
+      <div className="wrapper">
+        <h2 className="section-headline">Recent articles</h2>
+        <ul className="article-list">
+          {posts.map(({ node }) => {
+            return (
+              <li key={node.slug}>
+                <ArticlePreview contentType="blog" article={node} />
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </Layout>
   )
@@ -45,7 +36,7 @@ export default Index
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
+    posts: allContentfulBlogPost(sort: { fields: [publishDate], order: DESC }) {
       edges {
         node {
           title
@@ -58,14 +49,12 @@ export const pageQuery = graphql`
             }
           }
           description {
-            childMarkdownRemark {
-              html
-            }
+            description
           }
         }
       }
     }
-    allContentfulPerson(
+    top: allContentfulPerson(
       filter: { contentful_id: { eq: "15jwOBqpxqSAOy2eOO4S0m" } }
     ) {
       edges {
@@ -75,7 +64,7 @@ export const pageQuery = graphql`
             shortBio
           }
           title
-          heroImage: image {
+          image {
             fluid(
               maxWidth: 1180
               maxHeight: 480
@@ -83,6 +72,9 @@ export const pageQuery = graphql`
               background: "rgb:000000"
             ) {
               ...GatsbyContentfulFluid
+            }
+            file {
+              url
             }
           }
         }

@@ -1,9 +1,9 @@
 import { footer, middleParent, middleChild } from './index.module.css'
-const Footer = ({ children }) => {
+const Footer = ({ dataTyoe, children }) => {
   return (
     <footer className={footer}>
       <a className={middleParent} href="https://twitter.com/enolate0">
-        <span className={middleChild}>当分の連絡先 &rarr;</span>
+        <span className={middleChild}>翻訳チーム含めた当分の連絡先 &rarr;</span>
         <img
           className={middleChild}
           src="/twitter.png"

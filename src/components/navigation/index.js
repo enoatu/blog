@@ -1,14 +1,13 @@
+import PropTypes from 'prop-types'
 import * as styles from './index.module.css'
-import { siteTitle } from '@/config'
-import { Link, graphql, useStaticQuery } from 'gatsby'
-import get from 'lodash/get'
+import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-const Navigation = ({ logo }) => {
+const Navigation = ({ logoFluid }) => {
   return (
     <nav className={styles.navigation} role="navigation">
       <div className={styles.logoWrapper}>
-        <Img className={styles.logo} alt="logo" fluid={logo.fluid} />
+        <Img className={styles.logo} alt="logo" fluid={logoFluid} />
       </div>
       <ul className={styles.navigationUl}>
         <li className={styles.navigationItem}>
@@ -25,4 +24,9 @@ const Navigation = ({ logo }) => {
     </nav>
   )
 }
+
+PropTypes.Navigation = {
+  logoFluid: PropTypes.object.isRequired,
+}
+
 export default Navigation
