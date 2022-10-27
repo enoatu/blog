@@ -1,5 +1,4 @@
 import Layout from '@c/layout'
-import * as heroStyles from '@c/hero/index.module.css'
 import * as postStyles from './index.module.css'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
@@ -65,7 +64,7 @@ export const pageQuery = graphql`
     }
     favicon: allContentfulAsset(
       limit: 1
-      filter: { title: { eq: "blog-favicon-genkaimyocyo" } }
+      filter: { title: { eq: "blog-favicon-soukoumyocyo" } }
     ) {
       nodes {
         file {
@@ -75,7 +74,7 @@ export const pageQuery = graphql`
     }
     logo: allContentfulAsset(
       limit: 1
-      filter: { title: { eq: "blog-logo-genkaimyocyo-white" } }
+      filter: { title: { eq: "blog-logo-soukoumyocho-white" } }
     ) {
       nodes {
         fluid(maxWidth: 200, background: "rgb:000000") {
