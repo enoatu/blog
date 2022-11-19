@@ -114,6 +114,7 @@ a, p, small, li, strong {
 }
 .markdown pre {
   color: rgb(20, 255, 20);
+  white-space: pre-wrap;
   margin: 0.7rem 0;
   background: #000;
 }
@@ -124,7 +125,6 @@ a, p, small, li, strong {
   }
   .markdown pre {
     font-size: 0.6rem;
-    white-space: pre-wrap ;
   }
   .markdown img {
     max-width: 100%;

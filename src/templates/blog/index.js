@@ -2,9 +2,11 @@ import Layout from '@c/layout'
 import * as postStyles from './index.module.css'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
+import { setImg } from '@/utils/markdown'
 
 const BlogPost = (props) => {
   const post = props.data.blogPosts
+  const markdown = setImg(post.body.childMarkdownRemark.html)
   return (
     <Layout
       pageTitle={post.title}
@@ -28,7 +30,7 @@ const BlogPost = (props) => {
         <div
           className="markdown"
           dangerouslySetInnerHTML={{
-            __html: post.body.childMarkdownRemark.html,
+            __html: markdown,
           }}
         />
       </div>
