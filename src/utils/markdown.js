@@ -1,6 +1,6 @@
-export const setImg = (markdownHTML = '') => {
+export const setImg = (markdownHTML) => {
   const regexp = new RegExp('<p>imghttps://(.*)</p>', 'g')
-  const html = markdownHTML.replaceAll(
+  const html = markdownHTML?.replaceAll(
     regexp,
     '<img loading="lazy" src="https://$1?raw=true" >'
   )
