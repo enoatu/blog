@@ -1,7 +1,6 @@
 import Layout from '@c/layout'
 import * as styles from './index.module.css'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import { useEffect, useRef } from 'react'
 
 const BlogPost = (props) => {
@@ -26,19 +25,21 @@ const BlogPost = (props) => {
       pageTitle={post.title}
       description={post.description.description}
       baseColor={{ r: 150, g: 0, b: 0 }}
-      ogImageUrl={post.heroImage.fluid.src}
+      ogImageUrl={post.heroImage.file.url}
       faviconUrl={props.data.favicon.nodes[0].file.url}
-      logoFluid={props.data.logo.nodes[0].fluid}
-      {...props}>
+      logoFluid={props.data.logo.nodes[0].file.url}
+      {...props}
+    >
       <div>
-        <Img alt={post.title} fluid={post.heroImage.fluid} />
+        <img alt={post.title} src={post.heroImage.file.url} />
       </div>
       <div className={styles.wrapper}>
         <h1 className={styles.title}>{post.title}</h1>
         <p
           style={{
             display: 'block',
-          }}>
+          }}
+        >
           {post.publishDate}
         </p>
         <div
@@ -64,13 +65,8 @@ export const pageQuery = graphql`
         description
       }
       heroImage {
-        fluid(
-          maxWidth: 1180
-          maxHeight: 480
-          resizingBehavior: PAD
-          background: "rgb:000000"
-        ) {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
       }
       body {
@@ -94,8 +90,8 @@ export const pageQuery = graphql`
       filter: { title: { eq: "blog-logo-genkaimyocyo-white" } }
     ) {
       nodes {
-        fluid(maxWidth: 200, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
         title
       }

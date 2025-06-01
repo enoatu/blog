@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types'
 import * as styles from './index.module.css'
-import Img from 'gatsby-image'
 
 const Hero = ({ data }) => (
   <div className={styles.hero}>
-    <Img
+    <img
       className={styles.heroImage}
       alt={data.name}
-      fluid={data.image.fluid}
+      src={data.image.file.url}
     />
     <div className={styles.heroDetails}>
       <h1 className={styles.heroHeadline}>{data.name}</h1>

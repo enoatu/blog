@@ -4,9 +4,9 @@ import Layout from '@c/layout'
 import get from 'lodash/get'
 const NotFound = (props) => {
   const faviconUrl = get(props, 'data.favicon.nodes[0].file.url')
-  const logo = get(props, 'data.logo.nodes[0]')
+  const logoUrl = get(props, 'data.logo.nodes[0].file.url')
   return (
-    <Layout logo={logo}>
+    <Layout logoFluid={logoUrl}>
       <Helmet>
         <meta name="robots" content="noindex" />
       </Helmet>
@@ -39,8 +39,8 @@ export const pageQuery = graphql`
       filter: { title: { eq: "blog-logo-soukoumyocho-white" } }
     ) {
       nodes {
-        fluid(maxWidth: 200, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
         title
       }

@@ -1,7 +1,6 @@
 import Layout from '@c/layout'
 import * as postStyles from './index.module.css'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import { setImg } from '@/utils/markdown'
 
 const BlogPost = (props) => {
@@ -12,19 +11,25 @@ const BlogPost = (props) => {
       pageTitle={post.title}
       description={post.description.description}
       baseColor={{ r: 0, g: 0, b: 0 }}
-      ogImageUrl={post.heroImage.fluid.src}
+      ogImageUrl={post.heroImage.file.url}
       faviconUrl={props.data.favicon.nodes[0].file.url}
-      logoFluid={props.data.logo.nodes[0].fluid}
-      {...props}>
+      logoFluid={props.data.logo.nodes[0].file.url}
+      {...props}
+    >
       <div>
-        <Img alt={post.title} fluid={post.heroImage.fluid} />
+        <img
+          alt={post.title}
+          src={post.heroImage.file.url}
+          style={{ width: '100%', height: 'auto' }}
+        />
       </div>
       <div className={postStyles.wrapper}>
         <h1 className={postStyles.title}>{post.title}</h1>
         <p
           style={{
             display: 'block',
-          }}>
+          }}
+        >
           {post.publishDate}
         </p>
         <div
@@ -45,13 +50,8 @@ export const pageQuery = graphql`
       title
       publishDate(formatString: "YYYY年MM月DD日")
       heroImage {
-        fluid(
-          maxWidth: 1180
-          maxHeight: 480
-          resizingBehavior: PAD
-          background: "rgb:000000"
-        ) {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
         title
       }
@@ -79,8 +79,8 @@ export const pageQuery = graphql`
       filter: { title: { eq: "blog-logo-soukoumyocho-white" } }
     ) {
       nodes {
-        fluid(maxWidth: 200, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
         title
       }

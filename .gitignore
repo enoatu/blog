@@ -71,3 +71,5 @@ netlify.toml
 
 # chrome Lighthouse
 lighthouse*
+.yarn
+.DS_Store

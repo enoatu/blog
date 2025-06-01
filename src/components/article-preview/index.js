@@ -1,10 +1,9 @@
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
 import * as styles from './index.module.css'
 
 const ArticlePreview = ({ article, contentType }) => (
   <div>
-    <Img alt="" fluid={article.heroImage.fluid} className={styles.img} />
+    <img alt="" src={article.heroImage.file.url} className={styles.img} />
     <h3 className={styles.previewTitle}>
       <Link to={`/${contentType}/${article.slug}`}>{article.title}</Link>
     </h3>

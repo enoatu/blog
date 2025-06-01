@@ -8,7 +8,7 @@
   "scripts": {
     "fmt": "prettier --check --write 'src/**/*{.mjs,.js,.jsx,.ts,.tsx}'",
     "dev": "gatsby develop",
-    "build": "gatsby build",
+    "build": "NODE_OPTIONS=\"--openssl-legacy-provider\" gatsby build",
     "serve": "gatsby serve",
     "setup": "npm install --no-save contentful-import yargs-parser axios chalk && node ./.setup.js",
     "prepare": "husky install"

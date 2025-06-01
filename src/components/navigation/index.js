@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types'
 import * as styles from './index.module.css'
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
 
 const Navigation = ({ logoFluid }) => {
   return (
     <nav className={styles.navigation} role="navigation">
       <div className={styles.logoWrapper}>
-        <Img className={styles.logo} alt="logo" fluid={logoFluid} />
+        <img className={styles.logo} alt="logo" src={logoFluid} />
       </div>
       <ul className={styles.navigationUl}>
         <li className={styles.navigationItem}>

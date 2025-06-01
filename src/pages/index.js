@@ -12,10 +12,11 @@ const Index = (props) => {
       type="blog"
       description={null}
       baseColor={{ r: 0, g: 0, b: 0 }}
-      ogImageUrl={props.data.top.edges[0].node.image.fluid.src}
+      ogImageUrl={props.data.top.edges[0].node.image.file.url}
       faviconUrl={props.data.favicon.nodes[0].file.url}
-      logoFluid={props.data.logo.nodes[0].fluid}
-      {...props}>
+      logoFluid={props.data.logo.nodes[0].file.url}
+      {...props}
+    >
       <Hero data={author.node} />
       <div className="wrapper">
         <h2 className="section-headline">Recent articles</h2>
@@ -44,8 +45,8 @@ export const pageQuery = graphql`
           publishDate(formatString: "YYYY年MM月DD日")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+            file {
+              url
             }
           }
           description {
@@ -65,13 +66,8 @@ export const pageQuery = graphql`
           }
           title
           image {
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid
+            file {
+              url
             }
           }
         }
@@ -92,8 +88,8 @@ export const pageQuery = graphql`
       filter: { title: { eq: "blog-logo-soukoumyocho-white" } }
     ) {
       nodes {
-        fluid(maxWidth: 200, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
         title
       }

@@ -2,7 +2,6 @@ import ArticlePreview from '@c/article-preview'
 import * as styles from '@/pages/7daystodie.module.css'
 import Layout from '@c/layout'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import * as baseStyles from '@c/base.css'
 
 const _7daystodie = (props) => {
@@ -14,13 +13,14 @@ const _7daystodie = (props) => {
       type="7dtd"
       description={null}
       baseColor={{ r: 150, g: 0, b: 0 }}
-      ogImageUrl={props.data.top.edges[0].node.image.fluid.src}
+      ogImageUrl={props.data.top.edges[0].node.image.file.url}
       faviconUrl={props.data.favicon.nodes[0].file.url}
-      logoFluid={props.data.logo.nodes[0].fluid}
-      {...props}>
+      logoFluid={props.data.logo.nodes[0].file.url}
+      {...props}
+    >
       <div className={styles.top}>
         <div className={styles.description}>
-          <Img alt={top.image.title} fluid={top.image.fluid} />
+          <img alt={top.image.title} src={top.image.file.url} />
           <div className={styles.descriptionDetail}>
             <h1 className={styles.descriptionTitle}>{top.title}</h1>
             <div
@@ -61,8 +61,8 @@ export const pageQuery = graphql`
           publishDate(formatString: "YYYY年MM月DD日")
           tags
           heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-              ...GatsbyContentfulFluid
+            file {
+              url
             }
           }
           description {
@@ -76,13 +76,8 @@ export const pageQuery = graphql`
         node {
           title
           image {
-            fluid(
-              maxWidth: 1180
-              maxHeight: 480
-              resizingBehavior: PAD
-              background: "rgb:000000"
-            ) {
-              ...GatsbyContentfulFluid
+            file {
+              url
             }
             title
           }
@@ -109,8 +104,8 @@ export const pageQuery = graphql`
       filter: { title: { eq: "blog-logo-genkaimyocyo-white" } }
     ) {
       nodes {
-        fluid(maxWidth: 200, background: "rgb:000000") {
-          ...GatsbyContentfulFluid
+        file {
+          url
         }
         title
       }
