@@ -31,7 +31,11 @@ const BlogPost = (props) => {
       {...props}
     >
       <div>
-        <img alt={post.title} src={post.heroImage.file.url} />
+        <img
+          alt={post.title}
+          src={post.heroImage.file.url}
+          style={{ width: '100%', height: 'auto' }}
+        />
       </div>
       <div className={styles.wrapper}>
         <h1 className={styles.title}>{post.title}</h1>

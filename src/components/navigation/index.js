@@ -6,7 +6,12 @@ const Navigation = ({ logoFluid }) => {
   return (
     <nav className={styles.navigation} role="navigation">
       <div className={styles.logoWrapper}>
-        <img className={styles.logo} alt="logo" src={logoFluid} />
+        <img
+          className={styles.logo}
+          alt="logo"
+          src={logoFluid}
+          style={{ width: '100%', height: 'auto' }}
+        />
       </div>
       <ul className={styles.navigationUl}>
         <li className={styles.navigationItem}>

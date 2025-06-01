@@ -7,6 +7,7 @@ const Hero = ({ data }) => (
       className={styles.heroImage}
       alt={data.name}
       src={data.image.file.url}
+      style={{ width: '100%', height: 'auto' }}
     />
     <div className={styles.heroDetails}>
       <h1 className={styles.heroHeadline}>{data.name}</h1>

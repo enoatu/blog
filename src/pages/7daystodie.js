@@ -20,7 +20,11 @@ const _7daystodie = (props) => {
     >
       <div className={styles.top}>
         <div className={styles.description}>
-          <img alt={top.image.title} src={top.image.file.url} />
+          <img
+            alt={top.image.title}
+            src={top.image.file.url}
+            style={{ width: '100%', height: 'auto' }}
+          />
           <div className={styles.descriptionDetail}>
             <h1 className={styles.descriptionTitle}>{top.title}</h1>
             <div
